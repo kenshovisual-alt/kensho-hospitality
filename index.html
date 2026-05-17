@@ -1,0 +1,2026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kensho Hospitality - AI & Digital Marketing for Restaurants and Hotels.</title>
+  <meta name="description" content="AI-powered digital tools built for restaurants and hotels. Web development, SEO, AI agents, review management, visual content and more." />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream:       '#FAFAF8',
+            'cream-alt': '#F4F1EC',
+            charcoal:    '#1C1B19',
+            brown:       '#7A7469',
+            'brown-light': '#E8E3DC',
+          },
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+            sans:  ['DM Sans', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
+
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body.page-preload {
+      opacity: 0;
+      visibility: hidden;
+    }
+    body.page-ready {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 140ms ease;
+    }
+  </style>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body class="bg-cream text-charcoal font-sans page-preload">
+
+  <!-- HEADER -->
+  <header id="header"></header>
+
+  <!-- HERO -->
+  <section id="hero" class="min-h-screen flex flex-col items-center justify-center text-center px-3 sm:px-5 pt-24 pb-16 relative overflow-hidden">
+
+    <!-- Background image -->
+    <div style="position:absolute;inset:0;z-index:0;background-image:url('assets/KenshoHero2.png');background-size:cover;background-position:center;background-attachment:fixed;">
+      <div style="position:absolute;inset:0;background:#1C1B19;opacity:0.50;"></div>
+    </div>
+
+    <!-- Content -->
+    <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;width:100%;">
+
+      <div id="hero-badge" class="hero-el mb-4" style="display:inline-flex;align-items:center;margin-top:5.75rem;">
+        <span class="section-label" style="background:rgba(255,255,255,0.18);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);border:1px solid rgba(255,255,255,0.38);border-radius:9999px;padding:0.38rem 0.95rem;color:#ffffff;letter-spacing:0.16em;font-size:0.61rem;line-height:1;box-shadow:0 2px 16px rgba(28,27,25,0.10),inset 0 1px 0 rgba(255,255,255,0.55);">HOSPITALITY MARKETING &amp; AI AGENCY</span>
+      </div>
+
+      <h1 id="hero-h1" class="hero-el font-serif" style="font-size:clamp(2.2rem,9vw,5.5rem);max-width:780px;margin:0 auto 2rem;text-align:center;font-weight:300;color:#ffffff;line-height:0.96;">
+        <span style="display:block;">Digital marketing and</span>
+        <span style="display:block;">operational systems for hospitality brands</span>
+      </h1>
+
+      <p id="hero-sub" class="hero-el font-sans" style="font-size:0.95rem;font-weight:300;letter-spacing:-0.01em;max-width:520px;line-height:1.6;color:rgba(255,255,255,0.80);margin:0 0 1.2rem;">
+        AI-powered marketing solutions designed for hospitality businesses. More revenue, less time wasted and smoother day-to-day operations.
+      </p>
+
+      <!-- Hero stat strip - glass -->
+      <div class="hero-stats-reveal w-full" style="max-width:510px;">
+        <div class="hero-stats overflow-hidden" style="display:flex;flex-wrap:nowrap;background:rgba(255,255,255,0.055);backdrop-filter:blur(18px) saturate(155%) brightness(1.03);-webkit-backdrop-filter:blur(18px) saturate(155%) brightness(1.03);border:1px solid rgba(255,255,255,0.13);border-radius:9px;box-shadow:0 7px 20px rgba(28,27,25,0.11),inset 0 1px 0 rgba(255,255,255,0.18);">
+          <div class="hero-stats-content" style="display:flex;flex-wrap:nowrap;justify-content:center;width:100%;">
+          <div style="flex:0 0 25%;padding:0.72rem 0.24rem 0.66rem;display:flex;flex-direction:column;justify-content:center;gap:0.34rem;text-align:center;">
+            <p class="font-serif" style="font-size:2.02rem;line-height:0.96;color:#ffffff;transform:translateY(-0.18rem);">85%</p>
+            <p class="font-sans font-light leading-snug" style="font-size:0.62rem;letter-spacing:-0.01em;color:rgba(255,255,255,0.64);">guests research online</p>
+          </div>
+          <div style="flex:0 0 25%;padding:0.72rem 0.24rem 0.66rem;display:flex;flex-direction:column;justify-content:center;gap:0.34rem;text-align:center;">
+            <p class="font-serif" style="font-size:2.02rem;line-height:0.96;color:#ffffff;transform:translateY(-0.18rem);">3x</p>
+            <p class="font-sans font-light leading-snug" style="font-size:0.62rem;letter-spacing:-0.01em;color:rgba(255,255,255,0.64);">more direct bookings</p>
+          </div>
+          <div style="flex:0 0 25%;padding:0.72rem 0.24rem 0.66rem;display:flex;flex-direction:column;justify-content:center;gap:0.34rem;text-align:center;">
+            <p class="font-serif" style="font-size:2.02rem;line-height:0.96;color:#ffffff;transform:translateY(-0.18rem);">24/7</p>
+            <p class="font-sans font-light leading-snug" style="font-size:0.62rem;letter-spacing:-0.01em;color:rgba(255,255,255,0.64);">instant replies</p>
+          </div>
+          <div style="flex:0 0 25%;padding:0.72rem 0.24rem 0.66rem;display:flex;flex-direction:column;justify-content:center;gap:0.34rem;text-align:center;">
+            <p class="font-serif" style="font-size:2.02rem;line-height:0.96;color:#ffffff;transform:translateY(-0.18rem);">50%</p>
+            <p class="font-sans font-light leading-snug" style="font-size:0.62rem;letter-spacing:-0.01em;color:rgba(255,255,255,0.64);">less time training staff</p>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Marquee inside hero -->
+      <div class="w-full" style="margin-top:2.5rem;">
+        <p class="font-sans text-center mb-4" style="font-size:0.75rem;font-weight:300;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.60);">Hospitality brands we have worked with</p>
+        <div class="hero-marquee-outer" style="max-width:920px;margin:0 auto;overflow:hidden;-webkit-mask-image:linear-gradient(to right, transparent 0%, rgba(0,0,0,0.92) 14%, rgba(0,0,0,0.92) 86%, transparent 100%);mask-image:linear-gradient(to right, transparent 0%, rgba(0,0,0,0.92) 14%, rgba(0,0,0,0.92) 86%, transparent 100%);">
+          <div class="hero-marquee-inner">
+            <div class="hero-marquee-group" aria-hidden="false">
+              <span class="hero-marquee-name">Marriott</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">NH Collection</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">Selman</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">Selina</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">San Marco Santa Cruz</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">Meliá</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">Villa des Orangers</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">Casa del Poeta</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">Hotel Reina Petronila</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">Hotel Palafox</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">Cabane</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">Oceans Club</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">Casa Ozama</span><span class="hero-marquee-sep">·</span>
+            </div>
+            <div class="hero-marquee-group" aria-hidden="true">
+              <span class="hero-marquee-name">Marriott</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">NH Collection</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">Selman</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">Selina</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">San Marco Santa Cruz</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">Meliá</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">Villa des Orangers</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">Casa del Poeta</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">Hotel Reina Petronila</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">Hotel Palafox</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">Cabane</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">Oceans Club</span><span class="hero-marquee-sep">·</span>
+              <span class="hero-marquee-name">Casa Ozama</span><span class="hero-marquee-sep">·</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- ABOUT SECTION -->
+  <section id="about" style="background:#FAFAF8;padding:9rem 1.25rem 5rem;border-top:1px solid #E8E3DC;">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+        <!-- Photo  -  shows first on mobile -->
+        <div class="order-1 md:order-2" style="position:relative;">
+          <img
+            src="assets/Sergio Office.PNG"
+            alt="Sergio Alonso  -  Kensho Hospitality"
+            class="w-full max-w-sm mx-auto rounded-[0.28rem]"
+            style="box-shadow:0 20px 60px rgba(28,27,25,0.10);display:block;"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div style="display:none;width:100%;max-width:340px;aspect-ratio:3/4;background:#F4F1EC;border-radius:12px;margin:0 auto;align-items:center;justify-content:center;border:1px solid #E8E3DC;">
+            <span class="font-sans" style="font-size:0.75rem;font-weight:300;color:#7A7469;">Portrait photo</span>
+          </div>
+          <!-- Name card -->
+          <div class="about-name-card" style="position:absolute;bottom:-2.15rem;right:-1.55rem;background:rgba(255,255,255,0.22);backdrop-filter:blur(20px) saturate(160%) brightness(1.06);-webkit-backdrop-filter:blur(20px) saturate(160%) brightness(1.06);border:1px solid rgba(255,255,255,0.55);border-radius:10px;padding:0.85rem 1.25rem;box-shadow:0 12px 36px rgba(28,27,25,0.13),inset 0 1px 0 rgba(255,255,255,0.8);">
+            <p style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;color:#1C1B19;letter-spacing:-0.01em;margin:0 0 0.15rem;">Sergio Alonso</p>
+            <p style="font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:300;color:#7A7469;letter-spacing:0.04em;margin:0;">CEO &amp; Founder</p>
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div class="order-2 md:order-1">
+          <p class="section-label mb-5">Who Is Behind This</p>
+          <h2 class="font-serif leading-tight mb-6" style="font-size:clamp(1.75rem,3vw,2.5rem);font-weight:300;color:#1C1B19;letter-spacing:-0.02em;">
+            Hospitality from the inside.<br>Marketing from the results.
+          </h2>
+          <div style="display:flex;flex-direction:column;gap:1rem;">
+            <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.7;letter-spacing:-0.01em;">
+              Graduated from hospitality & business management at Les Roches University in Switzerland - one of the best hospitality schools in the world. After graduating I spent years working in five-star hotels across Europe and the United States, in roles that taught me how these operations actually run.
+            </p>
+            <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.7;letter-spacing:-0.01em;">
+              For the past 9 years I have worked as a digital marketing specialist for hospitality businesses. I hold a Masters degree in AI and Automation, and multiple Google certifications across Search, Analytics and Digital Marketing.
+            </p>
+            <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.7;letter-spacing:-0.01em;">
+              The result is a service that does not treat hospitality as just another industry. I understand the pressure of a full dining room, the importance of every review, and what actually moves revenue in a restaurant or hotel.
+            </p>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:2rem;">
+            <span class="font-sans" style="font-size:0.75rem;font-weight:300;color:#7A7469;background:transparent;border:1px solid #E8E3DC;border-radius:6px;padding:4px 12px;display:inline-flex;align-items:center;gap:0.42rem;"><img src="assets/logos_certifications/descarga.png" alt="Les Roches" style="height:12px;width:auto;display:block;object-fit:contain;">Les Roches University</span>
+            <span class="font-sans" style="font-size:0.75rem;font-weight:300;color:#7A7469;background:transparent;border:1px solid #E8E3DC;border-radius:6px;padding:4px 12px;display:inline-flex;align-items:center;gap:0.42rem;"><img src="assets/logos_certifications/Google__G__logo.svg.png" alt="Google" style="height:12px;width:auto;display:block;object-fit:contain;">Google Certified</span>
+            <span class="font-sans" style="font-size:0.75rem;font-weight:300;color:#7A7469;background:transparent;border:1px solid #E8E3DC;border-radius:6px;padding:4px 12px;display:inline-flex;align-items:center;gap:0.42rem;"><img src="assets/logos_certifications/ENEB-google-logo-600x600-1.png" alt="ENEB" style="height:12px;width:auto;display:block;object-fit:contain;">Masters in AI &amp; Automation</span>
+            <span class="font-sans" style="font-size:0.75rem;font-weight:300;color:#7A7469;background:transparent;border:1px solid #E8E3DC;border-radius:6px;padding:4px 12px;display:inline-flex;align-items:center;gap:0.42rem;"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v5l3 2" stroke="#7A7469" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="8" r="5.5" stroke="#7A7469" stroke-width="1.1"/></svg>9 Years in Digital Marketing</span>
+            <span class="font-sans" style="font-size:0.75rem;font-weight:300;color:#7A7469;background:transparent;border:1px solid #E8E3DC;border-radius:6px;padding:4px 12px;display:inline-flex;align-items:center;gap:0.42rem;"><img src="assets/logos_certifications/conciergelogo.png" alt="Concierge" style="height:12px;width:auto;display:block;object-fit:contain;">5-Star International Hotel Experience</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SERVICES SECTION -->
+  <section id="services">
+    <!-- Section intro -->
+    <div id="services-intro" class="text-center px-5 reveal" style="background:#FAFAF8;padding-top:8.5rem;padding-bottom:7.5rem;">
+      <p class="section-label mb-6">What We Do</p>
+      <h2 class="font-serif leading-tight" style="font-size:clamp(2rem,4vw,3rem);max-width:640px;margin:0 auto 2.5rem;font-weight:300;color:#1C1B19;letter-spacing:-0.02em;">
+        Strategy and management.<br>Systems that follow.
+      </h2>
+      <div class="svc-tab-bar" style="margin:0 auto 2.5rem;">
+        <button class="svc-tab active" data-intro="strategy">Strategy / Consulting</button>
+        <button class="svc-tab" data-intro="tools">Execution / Systems</button>
+      </div>
+      <div id="intro-copy-strategy" style="max-width:520px;margin:0 auto;">
+        <p class="font-sans" style="font-size:0.9375rem;font-weight:300;line-height:1.65;letter-spacing:-0.01em;color:#7A7469;">
+          We define how your hospitality brand operates digitally before anything gets built. Positioning, communication, systems and ongoing management handled consistently over time.
+        </p>
+      </div>
+      <div id="intro-copy-tools" style="display:none;max-width:520px;margin:0 auto;">
+        <p class="font-sans" style="font-size:0.9375rem;font-weight:300;line-height:1.65;letter-spacing:-0.01em;color:#7A7469;">
+          Digital infrastructure built to support both the public presence and the operations of modern hospitality brands. Visibility, communication, content, automation and reporting, managed with consistency.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      (function() {
+        const introBtns = document.querySelectorAll('[data-intro]');
+        const introBar = introBtns[0] && introBtns[0].closest('.svc-tab-bar');
+        if (!introBar) return;
+
+        const pill = document.createElement('div');
+        pill.className = 'tab-slider-pill';
+        introBar.insertBefore(pill, introBar.firstChild);
+
+        const initActive = introBar.querySelector('.svc-tab.active');
+        if (initActive) {
+          gsap.set(pill, { left: initActive.offsetLeft, width: initActive.offsetWidth });
+        }
+
+        introBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            if (btn.classList.contains('active')) return;
+            const target = btn.dataset.intro;
+
+            gsap.to(pill, {
+              left: btn.offsetLeft,
+              width: btn.offsetWidth,
+              duration: 0.35,
+              ease: 'power2.inOut',
+              onComplete: () => {
+                introBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById('intro-copy-strategy').style.display = target === 'strategy' ? '' : 'none';
+                document.getElementById('intro-copy-tools').style.display = target === 'tools' ? '' : 'none';
+              }
+            });
+          });
+        });
+      })();
+    </script>
+
+    <!-- CINEMATIC IMAGE SECTION -->
+    <section id="cinematic-reveal" style="position:relative;overflow:hidden;background:#FAFAF8;height:100vh;width:100%;margin-bottom:0;">
+      <img
+        id="cinematic-img"
+        src="assets/KenshoHero1.png"
+        alt=""
+        style="width:100%;height:100%;object-fit:cover;display:block;will-change:transform;transform-origin:center center;"
+      />
+    </section>
+
+    <!-- ROW 1: Software Development  -  text RIGHT, visual LEFT -->
+    <div class="service-row reveal" data-svc="software" style="margin-top:5rem;">
+      <div class="service-row-intro">
+        <p class="font-serif">Development</p>
+      </div>
+      <div class="service-text order-1 md:order-2">
+        <div class="svc-tab-bar" data-group="software">
+          <button class="svc-tab active" data-tab="software-web">Website</button>
+          <button class="svc-tab" data-tab="software-training">Staff Training App</button>
+        </div>
+        <div id="svc-copy-software-web">
+          <p class="font-serif mb-3" style="font-size:clamp(1.68rem,2.7vw,2.2rem);font-weight:500;color:#1C1B19;letter-spacing:-0.02em;">Website</p>
+          <p class="pain-quote">
+            "Guests decide where to eat or sleep before they leave home. A slow, outdated or hard-to-find website sends that decision to your competitor."
+          </p>
+          <h3 class="font-serif mb-4" style="font-size:clamp(1.32rem,2.2vw,1.78rem);font-weight:300;color:#1C1B19;letter-spacing:-0.02em;">Built to be chosen before the guest arrives.</h3>
+          <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.7;letter-spacing:-0.01em;">
+            We build eye-catching, optimized websites tailored to your brand and your guests. Designed to rank on Google, load fast, and turn visits into reservations. In any language.
+          </p>
+        </div>
+        <div id="svc-copy-software-training" style="display:none;">
+          <p class="font-serif mb-3" style="font-size:clamp(1.68rem,2.7vw,2.2rem);font-weight:500;color:#1C1B19;letter-spacing:-0.02em;">Staff Training App</p>
+          <p class="pain-quote">
+            "High staff turnover is part of hospitality. Without a clear system, training becomes inconsistent, expensive, repetitive and difficult to scale."
+          </p>
+          <h3 class="font-serif mb-4" style="font-size:clamp(1.32rem,2.2vw,1.78rem);font-weight:300;color:#1C1B19;letter-spacing:-0.02em;">Your standards, in every pair of hands from day one.</h3>
+          <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.7;letter-spacing:-0.01em;">
+            A custom training app your team uses from their first shift. Brand knowledge, service protocols, upselling, menus, table layout - all current, all consistent. New team members learn faster, onboarding becomes more consistent, and every employee operates with the same standards from day one without taking time away from senior staff.
+          </p>
+        </div>
+        <div id="svc-stats-software-web" class="row-stats mt-8">
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">85%</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">of travelers research online before visiting</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">3x</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">more direct bookings vs no digital presence</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">En/Fr/Ar</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">multilingual from day one</p>
+          </div>
+        </div>
+        <div id="svc-stats-software-training" class="row-stats stats-hidden mt-8">
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">70%</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">annual staff turnover rate in hospitality</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">50%</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">faster onboarding with centralized systems</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">Zero</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">institutional knowledge lost when someone leaves</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual column: clean background + floating glass card -->
+      <div class="service-visual order-2 md:order-1" id="svc-visual-software" style="position:relative;padding:0;background:#FAFAF8;">
+        <!-- Centered floating glass card -->
+        <div style="position:relative;z-index:1;display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:2rem;">
+
+          <!-- Website card (default) -->
+          <div class="glass-card" id="svc-visual-software-web" style="width:100%;">
+            <div style="height:500px;overflow:hidden;border-radius:6px;background:#F4F1EC;">
+              <img
+                src="assets/websitemockup.webp"
+                alt="Website mockup"
+                style="width:100%;height:100%;display:block;object-fit:cover;object-position:center top;"
+              />
+            </div>
+          </div>
+
+          <!-- Staff Training App card (hidden) -->
+          <div class="glass-card" id="svc-visual-software-training" style="display:none;width:100%;background:transparent;border:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;">
+            <div style="height:580px;padding:0;display:flex;align-items:flex-start;justify-content:center;overflow:hidden;">
+              <img
+                src="assets/StaffTrainingApp.webp"
+                alt="Staff Training App mockup"
+                style="display:block;width:100%;height:100%;object-fit:contain;object-position:center top;"
+              />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 2: SEO + Google Business  -  text LEFT, visual RIGHT -->
+    <div class="service-row reveal" data-svc="seo">
+      <div class="service-row-intro">
+        <p class="font-serif">Visibility</p>
+      </div>
+
+      <!-- Visual column: clean background + floating glass card -->
+      <div class="service-visual order-2" id="svc-visual-seo" style="position:relative;padding:0;background:#FAFAF8;">
+        <div style="position:relative;z-index:1;display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:2rem;">
+
+          <!-- SEO card (default) -->
+          <div class="glass-card" id="svc-visual-seo-seo" style="width:100%;max-width:520px;">
+            <div class="glass-card-header">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="#001B3A" stroke-width="1.2"/><path d="M10.5 10.5L14 14" stroke="#001B3A" stroke-width="1.2" stroke-linecap="round"/></svg>
+              <span class="font-sans" style="font-size:1rem;font-weight:300;color:#1C1B19;">best restaurant marrakech medina</span>
+            </div>
+            <div class="glass-card-body" style="padding:1.2rem 1.25rem;display:flex;flex-direction:column;gap:0.72rem;">
+              <!-- Search result 1 – highlighted -->
+              <div style="background:#001B3A;border-radius:10px;padding:0.95rem 1.1rem;">
+                <div style="font-family:'DM Sans',sans-serif;font-size:0.79rem;font-weight:300;color:rgba(255,255,255,0.5);margin-bottom:3px;">maisonzyriab.com</div>
+                <div style="font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:300;color:#fff;margin-bottom:4px;">Maison Zyriab - Fine Dining in the Medina</div>
+                <div style="font-family:'DM Sans',sans-serif;font-size:0.83rem;font-weight:300;color:rgba(255,255,255,0.6);line-height:1.55;">Refined Moroccan dining, candlelit courtyards and nightly reservations in the heart of Marrakech...</div>
+              </div>
+              <!-- Result 2 -->
+              <div style="padding:0.56rem 0.9rem;border-bottom:1px solid #E8E3DC;">
+                <div style="font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:300;color:#7A7469;margin-bottom:3px;">tripadvisor.com › restaurants</div>
+                <div style="font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:300;color:#1C1B19;margin-bottom:4px;">Best Restaurants in Marrakech – TripAdvisor</div>
+                <div style="font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:300;color:#7A7469;line-height:1.48;">Browse the top-rated restaurants in Marrakech as reviewed by travelers...</div>
+              </div>
+              <!-- Result 3 -->
+              <div style="padding:0.56rem 0.9rem;">
+                <div style="font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:300;color:#7A7469;margin-bottom:3px;">booking.com › restaurants</div>
+                <div style="font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:300;color:#1C1B19;margin-bottom:4px;">Top Marrakech Restaurants Near You</div>
+                <div style="font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:300;color:#7A7469;line-height:1.48;">Find and reserve the best tables in Marrakech. Compare menus and reviews...</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- GEO card (hidden) -->
+          <div class="glass-card" id="svc-visual-seo-geo" style="display:none;width:100%;">
+            <div class="glass-card-header">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="#001B3A" stroke-width="1.2"/><path d="M8 2.5C8 2.5 6 5 6 8s2 5.5 2 5.5M8 2.5C8 2.5 10 5 10 8s-2 5.5-2 5.5M2.5 8h11" stroke="#001B3A" stroke-width="1.2" stroke-linecap="round"/></svg>
+              <span class="font-sans" style="font-size:1rem;font-weight:300;color:#1C1B19;">AI Response</span>
+            </div>
+            <div class="glass-card-body" style="padding:1.5rem;display:flex;flex-direction:column;gap:1rem;">
+              <div style="align-self:flex-end;background:#001B3A;border-radius:12px 12px 3px 12px;padding:0.86rem 1.15rem;max-width:82%;">
+                <p style="font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:300;color:#fff;line-height:1.55;">What are the best restaurants in Marrakech?</p>
+              </div>
+              <div style="background:#F4F1EC;border-radius:12px 12px 12px 3px;padding:1rem 1.15rem;">
+                <div style="font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:300;color:#1C1B19;line-height:1.6;">
+                  <p style="margin:0 0 0.35rem;">The best restaurants in Marrakech are:</p>
+                  <div style="display:flex;flex-direction:column;gap:0.2rem;">
+                    <p style="margin:0;"><strong style="font-weight:400;background:rgba(28,27,25,0.08);border-radius:3px;padding:1px 4px;">1. Your restaurant</strong></p>
+                    <p style="margin:0;">2. Option 2</p>
+                    <p style="margin:0;">3. Option 3</p>
+                    <p style="margin:0;">4. Option 4</p>
+                    <p style="margin:0;">5. Option 5</p>
+                  </div>
+                </div>
+              </div>
+              <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                <span style="background:rgba(28,27,25,0.06);border:1px solid #E8E3DC;border-radius:4px;padding:4px 12px;font-family:'DM Sans',sans-serif;font-size:0.81rem;font-weight:300;color:#7A7469;">ChatGPT</span>
+                <span style="background:rgba(28,27,25,0.06);border:1px solid #E8E3DC;border-radius:4px;padding:4px 12px;font-family:'DM Sans',sans-serif;font-size:0.81rem;font-weight:300;color:#7A7469;">Gemini</span>
+                <span style="background:rgba(28,27,25,0.06);border:1px solid #E8E3DC;border-radius:4px;padding:4px 12px;font-family:'DM Sans',sans-serif;font-size:0.81rem;font-weight:300;color:#7A7469;">Perplexity</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Google Business card (hidden) -->
+          <div class="glass-card" id="svc-visual-seo-gbp" style="display:none;width:100%;">
+            <div class="glass-card-body" style="padding:1.8rem;">
+              <p style="font-family:'DM Sans',sans-serif;font-size:1.32rem;font-weight:300;color:#1C1B19;margin-bottom:7px;">Le Jardin Noir</p>
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
+                <span style="color:#F5A623;font-size:1.15rem;letter-spacing:1px;">★★★★★</span>
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.83rem;font-weight:300;color:#7A7469;">4.9 · 248 reviews</span>
+              </div>
+              <p style="font-family:'DM Sans',sans-serif;font-size:0.83rem;font-weight:300;color:#7A7469;margin-bottom:14px;">Restaurant · Marrakech</p>
+              <div style="height:100px;background:#E8E3DC;border-radius:10px;margin-bottom:14px;overflow:hidden;position:relative;">
+                <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 10px,rgba(255,255,255,0.4) 10px,rgba(255,255,255,0.4) 11px),repeating-linear-gradient(90deg,transparent,transparent 10px,rgba(255,255,255,0.4) 10px,rgba(255,255,255,0.4) 11px);"></div>
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:14px;height:14px;background:#001B3A;border-radius:50%;border:2px solid #fff;"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.865rem;font-weight:300;color:#1C1B19;">Open · Closes 23:00</span>
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.83rem;font-weight:300;color:#7A7469;">Guéliz</span>
+              </div>
+              <div style="display:flex;gap:10px;">
+                <div style="flex:1;text-align:center;padding:9px 0;border:1px solid #E8E3DC;border-radius:7px;">
+                  <span style="font-family:'DM Sans',sans-serif;font-size:0.865rem;font-weight:300;color:#1C1B19;">Directions</span>
+                </div>
+                <div style="flex:1;text-align:center;padding:9px 0;background:#001B3A;border-radius:7px;">
+                  <span style="font-family:'DM Sans',sans-serif;font-size:0.865rem;font-weight:300;color:#fff;">Website</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="service-text order-1">
+        <div class="svc-tab-bar" data-group="seo">
+          <button class="svc-tab active" data-tab="seo-seo">SEO</button>
+          <button class="svc-tab" data-tab="seo-geo">GEO</button>
+          <button class="svc-tab" data-tab="seo-gbp"><span class="md:hidden">Google Business</span><span class="hidden md:inline">Google Business Profile</span></button>
+        </div>
+        <div id="svc-copy-seo-seo">
+          <p class="font-serif mb-3" style="font-size:clamp(1.68rem,2.7vw,2.2rem);font-weight:500;color:#1C1B19;letter-spacing:-0.02em;">SEO</p>
+          <p class="pain-quote">
+            "Most restaurants and hotels rely entirely on booking platforms because their own visibility was never properly built."
+          </p>
+          <h3 class="font-serif mb-4" style="font-size:clamp(1.32rem,2.2vw,1.78rem);font-weight:300;color:#1C1B19;letter-spacing:-0.02em;">Get found before your competitors.</h3>
+          <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.7;letter-spacing:-0.01em;">
+            Technical SEO, competitor tracking, local visibility and content strategy designed around how modern guests search, compare and choose where to stay or dine.
+          </p>
+        </div>
+        <div id="svc-copy-seo-geo" style="display:none;">
+          <p class="font-serif mb-3" style="font-size:clamp(1.68rem,2.7vw,2.2rem);font-weight:500;color:#1C1B19;letter-spacing:-0.02em;">GEO</p>
+          <p class="pain-quote">
+            "ChatGPT, Gemini, Grok, Claude, Copilot and Perplexity are already answering 'best restaurant in your city' for millions of people. Most properties are invisible to them."
+          </p>
+          <h3 class="font-serif mb-4" style="font-size:clamp(1.32rem,2.2vw,1.78rem);font-weight:300;color:#1C1B19;letter-spacing:-0.02em;">Visible where guests are already asking.</h3>
+          <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.7;letter-spacing:-0.01em;">
+            GEO - Generative Engine Optimization - positions your business to appear inside AI tools and large language models. We build the structured signals, citations and content that make AI systems recommend your property.
+          </p>
+        </div>
+        <div id="svc-copy-seo-gbp" style="display:none;">
+          <p class="font-serif mb-3" style="font-size:clamp(1.68rem,2.7vw,2.2rem);font-weight:500;color:#1C1B19;letter-spacing:-0.02em;">Google Business Profile</p>
+          <p class="pain-quote">
+            "Your Google profile is often the very first impression a potential guest gets - before your website, before your menu. Outdated information, low ratings, missing photos or unanswered reviews cost you bookings."
+          </p>
+          <h3 class="font-serif mb-4" style="font-size:clamp(1.32rem,2.2vw,1.78rem);font-weight:300;color:#1C1B19;letter-spacing:-0.02em;">Your Google profile, always working in your favor.</h3>
+          <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.7;letter-spacing:-0.01em;">
+            We optimize and actively maintain your profile. Accurate and updated information, fresh visuals, responses to every review. Every search impression converted into a visit.
+          </p>
+        </div>
+        <div id="svc-stats-seo-seo" class="row-stats mt-8">
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">70%</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">of diners choose via Google search</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">46%</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">of all Google searches have local intent</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">Organic</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">visibility compounds month after month</p>
+          </div>
+        </div>
+        <div id="svc-stats-seo-geo" class="row-stats stats-hidden mt-8">
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">1 in 3</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">Google searches now triggers an AI overview</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">Millions</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">of hospitality queries answered by AI daily</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">3x</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">faster growth in AI search vs traditional search</p>
+          </div>
+        </div>
+        <div id="svc-stats-seo-gbp" class="row-stats stats-hidden mt-8">
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">4x</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">more likely to be chosen with a complete active profile</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">89%</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">of people check Google before visiting a restaurant</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">42%</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">of local searches result in a same-day visit</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 6: Social Media + Ads  -  text RIGHT, visual LEFT -->
+    <div class="service-row reveal" data-svc="social">
+      <div class="service-row-intro">
+        <p class="font-serif">Community / Advertising</p>
+      </div>
+      <div class="service-visual order-2 md:order-1" id="svc-visual-social" style="position:relative;padding:0;background:#FAFAF8;">
+        <div style="position:relative;z-index:1;display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:2rem;">
+
+          <!-- Social Media Management card (default) -->
+          <div class="glass-card" id="svc-visual-social-social" style="width:100%;">
+            <div style="width:100%;height:540px;overflow:hidden;border-radius:6px;box-shadow:0 8px 32px rgba(28,27,25,0.18);background:#F4F1EC;">
+              <img src="assets/SocialMedia.webp" alt="Social media showcase" style="width:100%;height:100%;display:block;object-fit:cover;object-position:center;" />
+            </div>
+          </div>
+
+          <!-- Advertising card (hidden) -->
+          <div class="glass-card" id="svc-visual-social-ads" style="display:none;width:100%;">
+            <div style="background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 8px 32px rgba(28,27,25,0.12);">
+              <!-- Campaign header -->
+              <div style="padding:1.35rem 1.5rem 1.05rem;border-bottom:1px solid #E8E3DC;">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+                  <div>
+                    <p style="font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:300;color:#7A7469;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:3px;">Meta Ads · Active</p>
+                    <p style="font-family:'Cormorant Garamond',serif;font-size:1.44rem;font-weight:300;color:#1C1B19;line-height:1.2;">Atelier Rive - Summer Terrace Campaign</p>
+                  </div>
+                  <span style="background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);border-radius:9999px;padding:3px 12px;font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:300;color:#16a34a;">Live</span>
+                </div>
+              </div>
+              <!-- Line chart area -->
+              <div style="padding:1.05rem 1.5rem;border-bottom:1px solid #E8E3DC;">
+                <svg viewBox="0 0 260 60" width="100%" height="64" style="display:block;">
+                  <defs>
+                    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#001B3A" stop-opacity="0.12"/>
+                      <stop offset="100%" stop-color="#001B3A" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M0 50 C30 48,50 42,80 36 C110 30,130 28,160 20 C190 12,220 10,260 6" fill="none" stroke="#001B3A" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M0 50 C30 48,50 42,80 36 C110 30,130 28,160 20 C190 12,220 10,260 6 L260 60 L0 60 Z" fill="url(#chartGrad)"/>
+                </svg>
+              </div>
+              <!-- Key metrics row -->
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-bottom:1px solid #E8E3DC;">
+                <div style="padding:1.05rem 1.15rem;border-right:1px solid #E8E3DC;">
+                  <p style="font-family:'DM Sans',sans-serif;font-size:0.71rem;font-weight:300;color:#7A7469;margin-bottom:3px;letter-spacing:0.04em;text-transform:uppercase;">Impressions</p>
+                  <p style="font-family:'Cormorant Garamond',serif;font-size:1.61rem;font-weight:300;color:#1C1B19;line-height:1;">48.2k</p>
+                </div>
+                <div style="padding:1.05rem 1.15rem;border-right:1px solid #E8E3DC;">
+                  <p style="font-family:'DM Sans',sans-serif;font-size:0.71rem;font-weight:300;color:#7A7469;margin-bottom:3px;letter-spacing:0.04em;text-transform:uppercase;">Clicks</p>
+                  <p style="font-family:'Cormorant Garamond',serif;font-size:1.61rem;font-weight:300;color:#1C1B19;line-height:1;">1,840</p>
+                </div>
+                <div style="padding:1.05rem 1.15rem;">
+                  <p style="font-family:'DM Sans',sans-serif;font-size:0.71rem;font-weight:300;color:#7A7469;margin-bottom:3px;letter-spacing:0.04em;text-transform:uppercase;">Bookings</p>
+                  <p style="font-family:'Cormorant Garamond',serif;font-size:1.61rem;font-weight:300;color:#1C1B19;line-height:1;">317</p>
+                </div>
+              </div>
+              <!-- Budget row -->
+              <div style="padding:1.05rem 1.5rem;display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.81rem;font-weight:300;color:#7A7469;">Budget used: 68%</span>
+                <div style="flex:1;max-width:120px;height:5px;background:#E8E3DC;border-radius:9999px;margin:0 0.875rem;overflow:hidden;">
+                  <div style="width:68%;height:100%;background:#001B3A;border-radius:9999px;"></div>
+                </div>
+                <span style="font-family:'DM Sans',sans-serif;font-size:0.81rem;font-weight:300;color:#1C1B19;">€680 / €1000</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="service-text order-1 md:order-2">
+        <div class="svc-tab-bar" data-group="social">
+          <button class="svc-tab active" data-tab="social-social">Social Media Management</button>
+          <button class="svc-tab" data-tab="social-ads">Ads &amp; Campaigns</button>
+        </div>
+        <div id="svc-copy-social-social">
+          <h2 class="font-serif mb-3" style="font-size:clamp(1.68rem,2.7vw,2.2rem);font-weight:500;color:#1C1B19;letter-spacing:-0.02em;">Social Media Management</h2>
+          <p class="pain-quote">
+            "Irregular posting, bad content and no clear strategy make your profiles look like an afterthought  -  and guests notice."
+          </p>
+          <h3 class="font-serif mb-4" style="font-size:clamp(1.32rem,2.2vw,1.78rem);font-weight:300;color:#1C1B19;letter-spacing:-0.02em;">Your hospitality brand standing out online.</h3>
+          <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.7;letter-spacing:-0.01em;">
+            We run the social presence of hospitality brands end to end. Communication strategy, content planning, visual formats, scheduling, and direct engagement with your audience - built around each platform where your guests spend time.
+          </p>
+        </div>
+        <div id="svc-copy-social-ads" style="display:none;">
+          <h2 class="font-serif mb-3" style="font-size:clamp(1.68rem,2.7vw,2.2rem);font-weight:500;color:#1C1B19;letter-spacing:-0.02em;">Ads &amp; Campaigns</h2>
+          <p class="pain-quote">
+            "Ad spend without a clear strategy and tracking setup produces unclear results and wasted budget."
+          </p>
+          <h3 class="font-serif mb-4" style="font-size:clamp(1.32rem,2.2vw,1.78rem);font-weight:300;color:#1C1B19;letter-spacing:-0.02em;">Paid campaigns that reach the right people.</h3>
+          <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.7;letter-spacing:-0.01em;">
+            Google Ads and Meta Ads set up and managed when you are ready to reach further. We set up tracking, monitor what converts and adjust monthly. Transparent reporting, no guesswork.
+          </p>
+        </div>
+        <div id="svc-stats-social-social" class="row-stats mt-8">
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">3x</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">more direct bookings for hotels active on social</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">60%</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">more engagement with locally relevant content</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">Managed</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">end to end with no effort from your team</p>
+          </div>
+        </div>
+        <div id="svc-stats-social-ads" class="row-stats stats-hidden mt-8">
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">4x</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">average return on ad spend for hospitality Meta campaigns</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">35%</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">lower cost per booking compared to OTA commission</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">Full</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">tracking from impression to confirmed reservation</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 5: Visual Content  -  text LEFT, visual RIGHT -->
+    <div class="service-row reveal" data-svc="visual">
+      <div class="service-row-intro">
+        <p class="font-serif">Content Production</p>
+      </div>
+      <div class="service-text order-1">
+        <div class="svc-tab-bar" data-group="visual">
+          <button class="svc-tab active" data-tab="visual-brand">Brand Design</button>
+          <button class="svc-tab" data-tab="visual-pro">Professional Shoot</button>
+          <button class="svc-tab" data-tab="visual-ai">AI Edit</button>
+        </div>
+        <div id="svc-copy-visual-brand">
+          <h2 class="font-serif mb-3" style="font-size:clamp(1.68rem,2.7vw,2.2rem);font-weight:500;color:#1C1B19;letter-spacing:-0.02em;">Brand Design</h2>
+          <p class="pain-quote">
+            "A beautifully run restaurant with a printed menu that looks like it came from a word processor sends exactly the wrong signal. Every touchpoint is part of the experience."
+          </p>
+          <h3 class="font-serif mb-4" style="font-size:clamp(1.32rem,2.2vw,1.78rem);font-weight:300;color:#1C1B19;letter-spacing:-0.02em;">Every surface your brand touches, carefully crafted.</h3>
+          <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.7;letter-spacing:-0.01em;">
+            Brand identity, logo, signage, menus, packaging, print and event materials - designed to the same standard as your space. We build the visual language of your brand and apply it across every printed and digital format your guests encounter.
+          </p>
+        </div>
+        <div id="svc-copy-visual-pro" style="display:none;">
+          <h2 class="font-serif mb-3" style="font-size:clamp(1.68rem,2.7vw,2.2rem);font-weight:500;color:#1C1B19;letter-spacing:-0.02em;">Professional Shoot</h2>
+          <p class="pain-quote">
+            "Stock imagery and amateur photos communicate the wrong thing about a premium hospitality business. Your food, your space and your atmosphere deserve to be shown at their best."
+          </p>
+          <h3 class="font-serif mb-4" style="font-size:clamp(1.32rem,2.2vw,1.78rem);font-weight:300;color:#1C1B19;letter-spacing:-0.02em;">Your space, captured at its best.</h3>
+          <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.7;letter-spacing:-0.01em;">
+            Full photo and video production on location. Dishes, interiors, atmosphere. Built from 9 years of hospitality visual projects across Europe, the United States and South America. For when you want full creative control of your brand image.
+          </p>
+        </div>
+        <div id="svc-copy-visual-ai" style="display:none;">
+          <h2 class="font-serif mb-3" style="font-size:clamp(1.68rem,2.7vw,2.2rem);font-weight:500;color:#1C1B19;letter-spacing:-0.02em;">AI Edit</h2>
+          <p class="pain-quote">
+            "Professional photography is expensive, requires scheduling, preparation and disruption to your day. And you already have hundreds of photos taken by real guests sitting on your Google page."
+          </p>
+          <h3 class="font-serif mb-4" style="font-size:clamp(1.32rem,2.2vw,1.78rem);font-weight:300;color:#1C1B19;letter-spacing:-0.02em;">Professional-quality visuals. No shooting day required.</h3>
+          <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.7;letter-spacing:-0.01em;">
+            We download your existing guest photos, enhance the lighting, color and composition using AI tools, and deliver content-ready visuals for your website and social media. We handle everything independently - no coordination needed from your team.
+          </p>
+        </div>
+        <div id="svc-stats-visual-brand" class="row-stats mt-8">
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">&lt;1s</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">a first impression is formed in under one second</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">Higher</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">perceived value with consistent brand identity</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">Every</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">printed surface is part of the guest experience</p>
+          </div>
+        </div>
+        <div id="svc-stats-visual-pro" class="row-stats stats-hidden mt-8">
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">30%</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">more orders when dishes are photographed professionally</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">40%</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">more time spent on pages with high quality visuals</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">9 years</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">of hospitality projects across three continents</p>
+          </div>
+        </div>
+        <div id="svc-stats-visual-ai" class="row-stats stats-hidden mt-8">
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">Zero</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">shooting day, scheduling or disruption to your operation</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">Premium</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">existing guest photos from Google Profile</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">x3</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">faster production</p>
+          </div>
+        </div>
+      </div>
+      <div class="service-visual order-2" id="svc-visual-visual" style="position:relative;padding:0;background:#FAFAF8;">
+        <div style="position:relative;z-index:1;display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:2rem;">
+
+          <!-- Brand Design card (default) - menu mockup -->
+          <div class="glass-card" id="svc-visual-visual-brand" style="width:100%;">
+            <div style="width:100%;height:540px;overflow:hidden;border-radius:6px;box-shadow:0 8px 32px rgba(28,27,25,0.18);background:#F4F1EC;">
+              <img src="assets/branddesignmock.webp" alt="Brand design showcase" style="width:100%;height:100%;display:block;object-fit:cover;object-position:center top;" />
+            </div>
+          </div>
+
+          <!-- Professional Shoot card (hidden) -->
+          <div class="glass-card" id="svc-visual-visual-pro" style="display:none;width:100%;">
+            <div style="width:100%;height:540px;overflow:hidden;border-radius:6px;box-shadow:0 8px 32px rgba(28,27,25,0.18);background:#F4F1EC;">
+              <img src="assets/Proshootbts.webp" alt="Professional shooting showcase" style="width:100%;height:100%;display:block;object-fit:cover;object-position:center top;" />
+            </div>
+          </div>
+
+          <!-- AI Enhanced card (hidden) - before/after comparison -->
+          <div class="glass-card" id="svc-visual-visual-ai" style="display:none;width:100%;padding:0;overflow:hidden;">
+            <div style="background:#001B3A;border-radius:6px;overflow:hidden;box-shadow:0 8px 32px rgba(28,27,25,0.4);">
+              <!-- Comparison area -->
+              <div id="ai-before-after" style="position:relative;width:100%;height:540px;overflow:hidden;cursor:col-resize;user-select:none;">
+                <!-- Before image -->
+                <img src="assets/aibefore_converted.webp" alt="Before AI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+                <!-- After image clipped -->
+                <div id="ai-after-clip" style="position:absolute;inset:0;clip-path:inset(0 0 0 50%);">
+                  <img src="assets/aiafter_converted.webp" alt="After AI" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+                </div>
+                <!-- Divider -->
+                <div id="ai-divider" style="position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;transform:translateX(-50%);z-index:3;pointer-events:none;"></div>
+                <!-- Handle -->
+                <div id="ai-handle" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:4;width:36px;height:36px;border-radius:50%;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.35);display:flex;align-items:center;justify-content:center;pointer-events:none;">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M5 8H11M5 5l-3 3 3 3M11 5l3 3-3 3" stroke="#001B3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <!-- Labels -->
+                <div style="position:absolute;bottom:10px;left:14px;z-index:5;">
+                  <span style="font-family:'DM Sans',sans-serif;font-size:0.6rem;font-weight:300;color:rgba(255,255,255,0.85);background:rgba(0,0,0,0.45);padding:2px 8px;border-radius:9999px;">Before</span>
+                </div>
+                <div style="position:absolute;bottom:10px;right:14px;z-index:5;">
+                  <span style="font-family:'DM Sans',sans-serif;font-size:0.6rem;font-weight:300;color:#fff;background:rgba(28,27,25,0.55);padding:2px 8px;border-radius:9999px;">After AI</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 3: AI Agents  -  text LEFT, visual RIGHT -->
+    <div class="service-row reveal" data-svc="ai">
+      <div class="service-row-intro">
+        <p class="font-serif">Communication</p>
+      </div>
+      <div class="service-text order-1 md:order-2">
+        <div class="svc-tab-bar" data-group="ai">
+          <button class="svc-tab active" data-tab="ai-wa">WhatsApp Concierge</button>
+          <button class="svc-tab" data-tab="ai-voice">Voice Agent</button>
+          <button class="svc-tab" data-tab="ai-social">Social Automation</button>
+        </div>
+        <div id="svc-copy-ai-wa">
+          <p class="font-serif mb-3" style="font-size:clamp(1.68rem,2.7vw,2.2rem);font-weight:500;color:#1C1B19;letter-spacing:-0.02em;">WhatsApp Concierge</p>
+          <p class="pain-quote">
+            "Your team is in the middle of service. The phone buzzes. Someone asks what time you close, whether you have vegetarian options, where you are. It pulls attention away from the guests in front of you."
+          </p>
+          <h3 class="font-serif mb-4" style="font-size:clamp(1.32rem,2.2vw,1.78rem);font-weight:300;color:#1C1B19;letter-spacing:-0.02em;">Every message answered. Instantly.</h3>
+          <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.7;letter-spacing:-0.01em;">
+            An AI assistant that knows your business responds to every WhatsApp message in real time - hours, menu, location, pricing - in the guest's language, at any hour of the day or night.
+          </p>
+        </div>
+        <div id="svc-copy-ai-voice" style="display:none;">
+          <p class="font-serif mb-3" style="font-size:clamp(1.68rem,2.7vw,2.2rem);font-weight:500;color:#1C1B19;letter-spacing:-0.02em;">Voice Agent</p>
+          <p class="pain-quote">
+            "A missed call during peak service is a lost guest. Most people don't call back. And when staff answer in a rush, the impression it leaves is not always the one you want."
+          </p>
+          <h3 class="font-serif mb-4" style="font-size:clamp(1.32rem,2.2vw,1.78rem);font-weight:300;color:#1C1B19;letter-spacing:-0.02em;">Every call answered, naturally, every time.</h3>
+          <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.7;letter-spacing:-0.01em;">
+            A real-sounding AI voice picks up every call, handles common questions and never puts anyone on hold. Built with ElevenLabs voice technology. Available 24 hours a day, every day.
+          </p>
+        </div>
+        <div id="svc-copy-ai-social" style="display:none;">
+          <p class="font-serif mb-3" style="font-size:clamp(1.68rem,2.7vw,2.2rem);font-weight:500;color:#1C1B19;letter-spacing:-0.02em;">Social Automation</p>
+          <p class="pain-quote">
+            "Your Instagram gets a DM. Someone asks if you do private events. Nobody replies for three days. That guest booked somewhere else on day one."
+          </p>
+          <h3 class="font-serif mb-4" style="font-size:clamp(1.32rem,2.2vw,1.78rem);font-weight:300;color:#1C1B19;letter-spacing:-0.02em;">Automated flows that turn followers into guests.</h3>
+          <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.7;letter-spacing:-0.01em;">
+            Automated messaging systems across Instagram and Facebook that respond instantly, qualify enquiries and guide guests toward a reservation. Promotional campaigns, keyword triggers, loyalty sequences - all running without anyone on your team lifting a finger.
+          </p>
+        </div>
+        <div id="svc-stats-ai-wa" class="row-stats mt-8">
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">60%</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">of unanswered messages never follow up</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">100%</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">of enquiries answered instantly at any hour</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">Auto</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">responds in the guest's language automatically</p>
+          </div>
+        </div>
+        <div id="svc-stats-ai-voice" class="row-stats stats-hidden mt-8">
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">70%</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">of calls during peak service go unanswered or rushed</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">100%</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">pickup rate - every call, every time</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">24/7</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">available in multiple languages around the clock</p>
+          </div>
+        </div>
+        <div id="svc-stats-ai-social" class="row-stats stats-hidden mt-8">
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">40%</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">of Instagram DMs from hospitality accounts go unanswered</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">3x</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">higher conversion rate when response is instant</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">Always</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">runs continuously without any staff involvement</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual column: clean background + floating glass card -->
+      <div class="service-visual order-2 md:order-1" id="svc-visual-ai" style="position:relative;padding:0;background:#FAFAF8;">
+        <div style="position:relative;z-index:1;display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:2rem;">
+
+          <!-- WhatsApp card (default) -->
+          <div class="glass-card" id="svc-visual-ai-wa" style="width:100%;">
+            <!-- WA header -->
+            <div style="background:#075E54;border-radius:6px 6px 0 0;padding:1.05rem 1.35rem;display:flex;align-items:center;gap:0.75rem;">
+              <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="18" height="18" viewBox="0 0 16 16" fill="white"><path d="M8 1.5C4.41 1.5 1.5 4.41 1.5 8c0 1.16.3 2.25.84 3.19L1.5 14.5l3.38-.82A6.46 6.46 0 008 14.5c3.59 0 6.5-2.91 6.5-6.5S11.59 1.5 8 1.5z"/></svg>
+              </div>
+              <div style="flex:1;">
+                <p style="font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:300;color:#fff;line-height:1.2;">Dar Éclipse</p>
+                <div style="display:flex;align-items:center;gap:4px;">
+                  <div style="width:6px;height:6px;border-radius:50%;background:#4ADE80;"></div>
+                  <span style="font-family:'DM Sans',sans-serif;font-size:0.67rem;font-weight:300;color:rgba(255,255,255,0.7);">online</span>
+                </div>
+              </div>
+            </div>
+            <!-- Chat body -->
+            <div class="glass-card-body" style="padding:1.2rem;display:flex;flex-direction:column;gap:0.75rem;background:rgba(255,255,255,0.4);">
+              <!-- Inbound -->
+              <div style="align-self:flex-start;max-width:80%;">
+                <div style="background:#fff;border-radius:0 10px 10px 10px;padding:0.63rem 0.92rem;box-shadow:0 1px 2px rgba(0,0,0,0.08);">
+                  <p style="font-family:'DM Sans',sans-serif;font-size:0.83rem;font-weight:300;color:#1C1B19;line-height:1.5;">What time do you close tonight?</p>
+                </div>
+                <p style="font-family:'DM Sans',sans-serif;font-size:0.63rem;font-weight:300;color:#7A7469;margin-top:3px;">20:14</p>
+              </div>
+              <!-- Outbound -->
+              <div style="align-self:flex-end;max-width:85%;">
+                <div style="background:#DCF8C6;border-radius:10px 0 10px 10px;padding:0.63rem 0.92rem;box-shadow:0 1px 2px rgba(0,0,0,0.08);">
+                  <p style="font-family:'DM Sans',sans-serif;font-size:0.83rem;font-weight:300;color:#1C1B19;line-height:1.5;">We're open until 23:00 tonight. Would you like to make a reservation? 🌙</p>
+                </div>
+                <div style="display:flex;justify-content:flex-end;align-items:center;gap:4px;margin-top:3px;">
+                  <p style="font-family:'DM Sans',sans-serif;font-size:0.63rem;font-weight:300;color:#7A7469;">20:14</p>
+                  <svg width="12" height="7" viewBox="0 0 14 8" fill="none"><path d="M1 4l3 3 5-6M5 4l3 3 5-6" stroke="#34B7F1" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </div>
+              <!-- Inbound -->
+              <div style="align-self:flex-start;max-width:80%;">
+                <div style="background:#fff;border-radius:0 10px 10px 10px;padding:0.63rem 0.92rem;box-shadow:0 1px 2px rgba(0,0,0,0.08);">
+                  <p style="font-family:'DM Sans',sans-serif;font-size:0.83rem;font-weight:300;color:#1C1B19;line-height:1.5;">Do you have vegetarian options?</p>
+                </div>
+                <p style="font-family:'DM Sans',sans-serif;font-size:0.63rem;font-weight:300;color:#7A7469;margin-top:3px;">20:15</p>
+              </div>
+              <!-- Outbound -->
+              <div style="align-self:flex-end;max-width:85%;">
+                <div style="background:#DCF8C6;border-radius:10px 0 10px 10px;padding:0.63rem 0.92rem;box-shadow:0 1px 2px rgba(0,0,0,0.08);">
+                  <p style="font-family:'DM Sans',sans-serif;font-size:0.83rem;font-weight:300;color:#1C1B19;line-height:1.5;">Absolutely - over half our menu is vegetarian. I can send you the menu if you'd like.</p>
+                </div>
+                <div style="display:flex;justify-content:flex-end;align-items:center;gap:4px;margin-top:3px;">
+                  <p style="font-family:'DM Sans',sans-serif;font-size:0.63rem;font-weight:300;color:#7A7469;">20:15</p>
+                  <svg width="12" height="7" viewBox="0 0 14 8" fill="none"><path d="M1 4l3 3 5-6M5 4l3 3 5-6" stroke="#34B7F1" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Voice Agent card (hidden) -->
+          <div class="glass-card" id="svc-visual-ai-voice" style="display:none;width:100%;background:transparent;border:none;box-shadow:none;backdrop-filter:none;padding:0;">
+            <div style="display:flex;justify-content:center;align-items:center;padding:0;">
+              <div style="width:234px;max-width:100%;height:500px;flex:0 0 234px;background:linear-gradient(180deg,#1c1c1e 0%,#050505 100%);border-radius:36px;padding:7px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.12);position:relative;">
+                <div style="position:absolute;top:7px;left:50%;transform:translateX(-50%);width:92px;height:28px;background:#000;border-radius:0 0 18px 18px;z-index:3;"></div>
+                <div style="position:absolute;right:-3px;top:110px;width:3px;height:58px;background:rgba(18,18,18,0.9);border-radius:0 3px 3px 0;"></div>
+                <div style="position:absolute;left:-3px;top:96px;width:3px;height:34px;background:rgba(18,18,18,0.9);border-radius:3px 0 0 3px;"></div>
+                <div style="position:absolute;left:-3px;top:142px;width:3px;height:52px;background:rgba(18,18,18,0.9);border-radius:3px 0 0 3px;"></div>
+                <div style="height:100%;border-radius:31px;overflow:hidden;background:transparent;position:relative;">
+                  <div style="padding:1rem 1rem 0.4rem;display:flex;justify-content:space-between;align-items:center;">
+                    <span style="font-family:'DM Sans',sans-serif;font-size:0.68rem;font-weight:400;color:rgba(255,255,255,0.92);letter-spacing:0.01em;">20:14</span>
+                    <div style="display:flex;align-items:center;gap:0.28rem;">
+                      <div style="width:10px;height:6px;border:1px solid rgba(255,255,255,0.5);border-radius:2px;position:relative;"><div style="position:absolute;inset:1px;background:rgba(255,255,255,0.55);border-radius:1px;"></div></div>
+                    </div>
+                  </div>
+                  <div style="padding:2.15rem 1.15rem 1rem;display:flex;flex-direction:column;align-items:center;justify-content:space-between;height:calc(100% - 1.9rem);">
+                    <div style="display:flex;flex-direction:column;align-items:center;">
+                      <div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.10);box-shadow:inset 0 1px 0 rgba(255,255,255,0.04);margin-bottom:0.9rem;">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="rgba(255,255,255,0.68)" stroke-width="1.5"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="rgba(255,255,255,0.68)" stroke-width="1.5" stroke-linecap="round"/></svg>
+                      </div>
+                      <div style="text-align:center;">
+                        <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:#fff;letter-spacing:-0.015em;margin-bottom:0.2rem;">Voice Agent</p>
+                        <p style="font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:300;color:rgba(255,255,255,0.58);margin-bottom:0.55rem;">+212 6 12 34 56 78</p>
+                        <p style="font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:300;color:rgba(255,255,255,0.78);letter-spacing:0.04em;">00:42</p>
+                      </div>
+                    </div>
+                    <div style="width:100%;display:flex;flex-direction:column;align-items:center;">
+                      <div style="display:flex;align-items:flex-end;gap:4px;height:42px;margin-bottom:1.35rem;">
+                        <div style="width:4px;background:rgba(255,255,255,0.24);border-radius:9999px;animation:waveAnim 1.2s ease-in-out infinite alternate;animation-delay:0s;height:34%;"></div>
+                        <div style="width:4px;background:rgba(255,255,255,0.32);border-radius:9999px;animation:waveAnim 1.2s ease-in-out infinite alternate;animation-delay:0.1s;height:58%;"></div>
+                        <div style="width:4px;background:rgba(255,255,255,0.45);border-radius:9999px;animation:waveAnim 1.2s ease-in-out infinite alternate;animation-delay:0.2s;height:88%;"></div>
+                        <div style="width:4px;background:rgba(255,255,255,0.55);border-radius:9999px;animation:waveAnim 1.2s ease-in-out infinite alternate;animation-delay:0.15s;height:100%;"></div>
+                        <div style="width:4px;background:rgba(255,255,255,0.45);border-radius:9999px;animation:waveAnim 1.2s ease-in-out infinite alternate;animation-delay:0.3s;height:72%;"></div>
+                        <div style="width:4px;background:rgba(255,255,255,0.28);border-radius:9999px;animation:waveAnim 1.2s ease-in-out infinite alternate;animation-delay:0.4s;height:42%;"></div>
+                        <div style="width:4px;background:rgba(255,255,255,0.36);border-radius:9999px;animation:waveAnim 1.2s ease-in-out infinite alternate;animation-delay:0.25s;height:64%;"></div>
+                        <div style="width:4px;background:rgba(255,255,255,0.5);border-radius:9999px;animation:waveAnim 1.2s ease-in-out infinite alternate;animation-delay:0.35s;height:90%;"></div>
+                      </div>
+                      <div style="display:flex;gap:1rem;align-items:center;">
+                        <div style="width:48px;height:48px;border-radius:50%;background:#ef4444;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 20px rgba(239,68,68,0.18);">
+                          <svg width="18" height="18" viewBox="0 0 16 16" fill="white" style="transform:rotate(135deg);"><path d="M3 3.5C3 9.3 6.7 13 12.5 13l.5-2.5-2-1-1 1C8.5 9.5 6.5 7.5 5.5 6l1-1-1-2-2.5.5z"/></svg>
+                        </div>
+                        <div style="width:48px;height:48px;border-radius:50%;background:#22C55E;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 20px rgba(34,197,94,0.18);">
+                          <svg width="18" height="18" viewBox="0 0 16 16" fill="white"><path d="M3 3.5C3 9.3 6.7 13 12.5 13l.5-2.5-2-1-1 1C8.5 9.5 6.5 7.5 5.5 6l1-1-1-2-2.5.5z"/></svg>
+                        </div>
+                      </div>
+                      <div style="width:96px;height:4px;border-radius:9999px;background:rgba(255,255,255,0.22);margin-top:1.25rem;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Automation / Instagram DM iPhone 17 mockup (hidden) -->
+          <div class="glass-card" id="svc-visual-ai-social" style="display:none;width:100%;background:transparent;border:none;box-shadow:none;backdrop-filter:none;padding:0;">
+            <div style="display:flex;justify-content:center;align-items:center;padding:0;">
+              <!-- iPhone 17 shell -->
+              <div style="width:242px;max-width:100%;height:524px;flex:0 0 242px;background:linear-gradient(180deg,#1c1c1e 0%,#050505 100%);border-radius:38px;padding:7px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.12);position:relative;">
+                <!-- Dynamic Island -->
+                <div style="position:absolute;top:7px;left:50%;transform:translateX(-50%);width:92px;height:28px;background:#000;border-radius:0 0 18px 18px;z-index:3;"></div>
+                <!-- Side buttons right -->
+                <div style="position:absolute;right:-3px;top:110px;width:3px;height:58px;background:rgba(18,18,18,0.9);border-radius:0 3px 3px 0;"></div>
+                <!-- Side buttons left -->
+                <div style="position:absolute;left:-3px;top:96px;width:3px;height:34px;background:rgba(18,18,18,0.9);border-radius:3px 0 0 3px;"></div>
+                <div style="position:absolute;left:-3px;top:142px;width:3px;height:52px;background:rgba(18,18,18,0.9);border-radius:3px 0 0 3px;"></div>
+                <!-- Screen -->
+                <div style="height:100%;border-radius:31px;overflow:hidden;background:#fff;position:relative;display:flex;flex-direction:column;">
+                  <!-- Status bar -->
+                  <div style="background:#fff;padding:0.55rem 1rem 0.2rem;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;">
+                    <span style="font-family:'DM Sans',sans-serif;font-size:0.6rem;font-weight:500;color:#111;">19:42</span>
+                    <div style="display:flex;align-items:center;gap:3px;">
+                      <svg width="12" height="8" viewBox="0 0 14 10" fill="#111" opacity="0.85"><rect x="0" y="6" width="2.5" height="4" rx="0.5"/><rect x="3.5" y="4" width="2.5" height="6" rx="0.5"/><rect x="7" y="2" width="2.5" height="8" rx="0.5"/><rect x="10.5" y="0" width="2.5" height="10" rx="0.5"/></svg>
+                      <svg width="11" height="8" viewBox="0 0 16 12" fill="#111" opacity="0.85"><path d="M8 10a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM8 6.5a5.5 5.5 0 013.9 1.6l1.4-1.4A7.5 7.5 0 008 4.5a7.5 7.5 0 00-5.3 2.2l1.4 1.4A5.5 5.5 0 018 6.5zM8 2.5A9.5 9.5 0 0114.7 5l1.4-1.4A11.5 11.5 0 008 0.5a11.5 11.5 0 00-8.1 3.1L1.3 5A9.5 9.5 0 018 2.5z"/></svg>
+                      <div style="width:14px;height:7px;border:1px solid rgba(0,0,0,0.35);border-radius:1.5px;position:relative;"><div style="position:absolute;inset:1px 2px 1px 1px;background:rgba(0,0,0,0.7);border-radius:0.5px;"></div><div style="position:absolute;right:-3px;top:50%;transform:translateY(-50%);width:2px;height:3px;background:rgba(0,0,0,0.3);border-radius:0 1px 1px 0;"></div></div>
+                    </div>
+                  </div>
+                  <!-- Instagram DM header -->
+                  <div style="background:#fff;padding:0.3rem 0.65rem 0.45rem;display:flex;align-items:center;gap:0.5rem;flex-shrink:0;border-bottom:1px solid #efefef;">
+                    <!-- Back arrow -->
+                    <svg width="9" height="14" viewBox="0 0 9 16" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2L2 8l5 6"/></svg>
+                    <!-- Avatar with gradient ring -->
+                    <div style="position:relative;flex-shrink:0;">
+                      <div style="width:30px;height:30px;border-radius:50%;padding:1.5px;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);">
+                        <div style="width:100%;height:100%;border-radius:50%;background:#fff;padding:1.5px;">
+                          <div style="width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,#d4a574,#8b6b4a);display:flex;align-items:center;justify-content:center;">
+                            <span style="font-family:'DM Sans',sans-serif;font-size:0.6rem;font-weight:600;color:#fff;">A</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="flex:1;min-width:0;">
+                      <p style="font-family:'DM Sans',sans-serif;font-size:0.68rem;font-weight:600;color:#111;line-height:1.2;margin:0;">atelierrive.marrakech</p>
+                      <p style="font-family:'DM Sans',sans-serif;font-size:0.52rem;font-weight:300;color:#8a8a8a;margin:0;line-height:1.3;">Active now</p>
+                    </div>
+                    <!-- Header icons -->
+                    <div style="display:flex;gap:0.65rem;align-items:center;">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M3 5.5C3 14.06 9.94 21 18.5 21l.5-3-2.5-1.5-1.5 1.5C13 16.5 7.5 11 6 9l1.5-1.5L6 5H3z"/></svg>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                    </div>
+                  </div>
+                  <!-- Chat messages area -->
+                  <div style="flex:1;overflow:hidden;padding:0.55rem 0.55rem;display:flex;flex-direction:column;gap:0.38rem;background:#fff;">
+                    <!-- Inbound bubble 1 — from follower who commented on a post -->
+                    <div style="align-self:flex-start;max-width:80%;">
+                      <div style="background:#efefef;border-radius:20px;padding:0.42rem 0.68rem;">
+                        <p style="font-family:'DM Sans',sans-serif;font-size:0.65rem;font-weight:300;color:#111;line-height:1.45;margin:0;">Hi! I saw your post about the rooftop event. Do you do private dinners up there? 🌹</p>
+                      </div>
+                      <p style="font-family:'DM Sans',sans-serif;font-size:0.45rem;font-weight:300;color:#8a8a8a;margin:2px 0 0 6px;line-height:1;">Seen · 19:42</p>
+                    </div>
+                    <!-- Outbound bubble 1 — AI instant reply -->
+                    <div style="align-self:flex-end;max-width:84%;">
+                      <div style="background:linear-gradient(to right,#a855f7,#ec4899);border-radius:20px;padding:0.42rem 0.68rem;">
+                        <p style="font-family:'DM Sans',sans-serif;font-size:0.65rem;font-weight:300;color:#fff;line-height:1.45;margin:0;">Yes! We host private rooftop dinners for groups of 6 to 30. Fully customisable menu, sunset views included. ✨</p>
+                      </div>
+                      <p style="font-family:'DM Sans',sans-serif;font-size:0.45rem;font-weight:300;color:#8a8a8a;margin:2px 6px 0 0;line-height:1;text-align:right;">Sent · 19:42</p>
+                    </div>
+                    <!-- Inbound bubble 2 -->
+                    <div style="align-self:flex-start;max-width:80%;">
+                      <div style="background:#efefef;border-radius:20px;padding:0.42rem 0.68rem;">
+                        <p style="font-family:'DM Sans',sans-serif;font-size:0.65rem;font-weight:300;color:#111;line-height:1.45;margin:0;">That sounds perfect. What's the price range?</p>
+                      </div>
+                    </div>
+                    <!-- Outbound bubble 2 -->
+                    <div style="align-self:flex-end;max-width:84%;">
+                      <div style="background:linear-gradient(to right,#a855f7,#ec4899);border-radius:20px;padding:0.42rem 0.68rem;">
+                        <p style="font-family:'DM Sans',sans-serif;font-size:0.65rem;font-weight:300;color:#fff;line-height:1.45;margin:0;">From €65 per person for a set menu, or €95 for the full tasting experience with wine pairing. Here is the full events brochure 👇</p>
+                      </div>
+                      <p style="font-family:'DM Sans',sans-serif;font-size:0.45rem;font-weight:300;color:#8a8a8a;margin:2px 6px 0 0;line-height:1;text-align:right;">Sent · 19:43</p>
+                    </div>
+                    <!-- Outbound link card -->
+                    <div style="align-self:flex-end;max-width:84%;">
+                      <div style="background:#fff;border-radius:12px;overflow:hidden;border:1px solid #dbdbdb;">
+                        <!-- Preview image -->
+                        <div style="width:100%;height:62px;background:#efefef;display:flex;align-items:center;justify-content:center;">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c0c0c0" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                        </div>
+                        <!-- Link meta -->
+                        <div style="padding:0.4rem 0.6rem 0.42rem;border-top:1px solid #dbdbdb;">
+                          <p style="font-family:'DM Sans',sans-serif;font-size:0.6rem;font-weight:500;color:#111;line-height:1.3;margin:0 0 1px;">Atelier Rive · Private Events</p>
+                          <p style="font-family:'DM Sans',sans-serif;font-size:0.52rem;font-weight:300;color:#8a8a8a;line-height:1.3;margin:0;">atelierrive.com</p>
+                        </div>
+                      </div>
+                      <p style="font-family:'DM Sans',sans-serif;font-size:0.45rem;font-weight:300;color:#8a8a8a;margin:2px 6px 0 0;line-height:1;text-align:right;">Sent · 19:43</p>
+                    </div>
+                  </div>
+                  <!-- Instagram input bar -->
+                  <div style="background:#fff;padding:0.35rem 0.5rem;display:flex;align-items:center;gap:0.4rem;flex-shrink:0;border-top:1px solid #efefef;">
+                    <div style="flex:1;background:#efefef;border-radius:20px;padding:0.3rem 0.65rem;">
+                      <span style="font-family:'DM Sans',sans-serif;font-size:0.58rem;font-weight:300;color:#8a8a8a;">Message...</span>
+                    </div>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8l4 4-4 4"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                  </div>
+                  <!-- Home bar -->
+                  <div style="background:#fff;padding:0.28rem 0;display:flex;justify-content:center;flex-shrink:0;">
+                    <div style="width:70px;height:3px;background:rgba(0,0,0,0.18);border-radius:9999px;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 4: Review Management  -  text RIGHT, visual LEFT -->
+    <div class="service-row reveal" data-svc="reviews">
+      <div class="service-row-intro">
+        <p class="font-serif">Reputation</p>
+      </div>
+      <div class="service-visual order-2" id="svc-visual-reviews" style="position:relative;padding:0;background:#FAFAF8;">
+        <div style="position:relative;z-index:1;display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:2rem;">
+
+          <!-- Review Replies card (default) - Google Reviews mockup -->
+          <div class="glass-card" id="svc-visual-reviews-auto" style="width:100%;">
+            <div style="background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 8px 32px rgba(28,27,25,0.12);">
+              <!-- Business header -->
+              <div style="padding:1.35rem 1.5rem 1.05rem;border-bottom:1px solid #E8E3DC;">
+                <p style="font-family:'DM Sans',sans-serif;font-size:1.27rem;font-weight:400;color:#1C1B19;margin-bottom:6px;">Le Jardin Noir</p>
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+                  <span style="font-family:'DM Sans',sans-serif;font-size:1.84rem;font-weight:400;color:#1C1B19;line-height:1;">4.9</span>
+                  <div style="display:flex;gap:1px;">
+                    <span style="color:#F9AB00;font-size:1.21rem;">★</span><span style="color:#F9AB00;font-size:1.21rem;">★</span><span style="color:#F9AB00;font-size:1.21rem;">★</span><span style="color:#F9AB00;font-size:1.21rem;">★</span><span style="color:#F9AB00;font-size:1.21rem;">★</span>
+                  </div>
+                  <span style="font-family:'DM Sans',sans-serif;font-size:0.83rem;font-weight:300;color:#7A7469;">248 reviews</span>
+                </div>
+                <p style="font-family:'DM Sans',sans-serif;font-size:0.83rem;font-weight:300;color:#7A7469;">Restaurant · Marrakech Medina</p>
+              </div>
+              <!-- Review 1 -->
+              <div style="padding:1.2rem 1.5rem;border-bottom:1px solid #E8E3DC;">
+                <div style="display:flex;align-items:center;gap:0.625rem;margin-bottom:7px;">
+                  <div style="width:30px;height:30px;border-radius:50%;background:#E8E3DC;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+                    <span style="font-family:'DM Sans',sans-serif;font-size:0.81rem;font-weight:400;color:#7A7469;">S</span>
+                  </div>
+                  <div>
+                    <p style="font-family:'DM Sans',sans-serif;font-size:0.865rem;font-weight:400;color:#1C1B19;line-height:1.2;">Sophie M.</p>
+                    <div style="display:flex;align-items:center;gap:5px;">
+                      <span style="color:#F9AB00;font-size:0.83rem;">★★★★★</span>
+                      <span style="font-family:'DM Sans',sans-serif;font-size:0.71rem;font-weight:300;color:#7A7469;">2 weeks ago</span>
+                    </div>
+                  </div>
+                </div>
+                <p style="font-family:'DM Sans',sans-serif;font-size:0.83rem;font-weight:300;color:#1C1B19;line-height:1.6;margin-bottom:8px;">A beautiful evening from start to finish. The garden terrace felt incredibly intimate and every course arrived with real care.</p>
+                <!-- Owner reply -->
+                <div style="background:#F4F1EC;border-radius:7px;padding:0.75rem 0.9rem;border-left:2px solid #E8E3DC;">
+                  <p style="font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:400;color:#1C1B19;margin-bottom:3px;">Response from the owner</p>
+                  <p style="font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:300;color:#7A7469;line-height:1.55;">Thank you so much, Sophie. It was a joy to have you with us - we hope to welcome you back soon.</p>
+                </div>
+              </div>
+              <!-- Review 2 -->
+              <div style="padding:1.05rem 1.5rem;">
+                <div style="display:flex;align-items:center;gap:0.625rem;margin-bottom:7px;">
+                  <div style="width:30px;height:30px;border-radius:50%;background:#E8E3DC;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+                    <span style="font-family:'DM Sans',sans-serif;font-size:0.81rem;font-weight:400;color:#7A7469;">J</span>
+                  </div>
+                  <div>
+                    <p style="font-family:'DM Sans',sans-serif;font-size:0.865rem;font-weight:400;color:#1C1B19;line-height:1.2;">James K.</p>
+                    <div style="display:flex;align-items:center;gap:5px;">
+                      <span style="color:#F9AB00;font-size:0.83rem;">★★★★★</span>
+                      <span style="font-family:'DM Sans',sans-serif;font-size:0.71rem;font-weight:300;color:#7A7469;">1 month ago</span>
+                    </div>
+                  </div>
+                </div>
+                <p style="font-family:'DM Sans',sans-serif;font-size:0.83rem;font-weight:300;color:#1C1B19;line-height:1.6;">Best meal of our entire trip. The staff were so warm and attentive. Will return every time we visit Morocco.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reporting & Tracking card (hidden) -->
+          <div class="glass-card" id="svc-visual-reviews-reporting" style="display:none;width:100%;">
+            <div style="background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 8px 32px rgba(28,27,25,0.12);">
+              <!-- Report header -->
+              <div style="padding:1.35rem 1.5rem;border-bottom:1px solid #E8E3DC;display:flex;justify-content:space-between;align-items:center;">
+                <div>
+                  <p style="font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:300;color:#7A7469;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:3px;">April 2025</p>
+                  <p style="font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:300;color:#1C1B19;">Monthly Report</p>
+                </div>
+                <div style="background:#F4F1EC;border-radius:8px;padding:5px 14px;">
+                  <span style="font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:300;color:#7A7469;">All platforms</span>
+                </div>
+              </div>
+              <!-- 2x2 stats grid -->
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid #E8E3DC;">
+                <div style="padding:1.2rem 1.35rem;border-right:1px solid #E8E3DC;border-bottom:1px solid #E8E3DC;">
+                  <p style="font-family:'DM Sans',sans-serif;font-size:0.71rem;font-weight:300;color:#7A7469;margin-bottom:4px;letter-spacing:0.04em;text-transform:uppercase;">Total Reviews</p>
+                  <p style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">48</p>
+                </div>
+                <div style="padding:1.2rem 1.35rem;border-bottom:1px solid #E8E3DC;">
+                  <p style="font-family:'DM Sans',sans-serif;font-size:0.71rem;font-weight:300;color:#7A7469;margin-bottom:4px;letter-spacing:0.04em;text-transform:uppercase;">Response Rate</p>
+                  <p style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">100%</p>
+                </div>
+                <div style="padding:1.2rem 1.35rem;border-right:1px solid #E8E3DC;">
+                  <p style="font-family:'DM Sans',sans-serif;font-size:0.71rem;font-weight:300;color:#7A7469;margin-bottom:4px;letter-spacing:0.04em;text-transform:uppercase;">Avg. Score</p>
+                  <p style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">4.8 ★</p>
+                </div>
+                <div style="padding:1.2rem 1.35rem;">
+                  <p style="font-family:'DM Sans',sans-serif;font-size:0.71rem;font-weight:300;color:#7A7469;margin-bottom:4px;letter-spacing:0.04em;text-transform:uppercase;">vs. Last Month</p>
+                  <p style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">↑ +0.2</p>
+                </div>
+              </div>
+              <!-- Sentiment bar -->
+              <div style="padding:1.2rem 1.5rem;">
+                <p style="font-family:'DM Sans',sans-serif;font-size:0.71rem;font-weight:300;color:#7A7469;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:8px;">Sentiment breakdown</p>
+                <div style="display:flex;height:10px;border-radius:9999px;overflow:hidden;gap:2px;">
+                  <div style="flex:72;background:#001B3A;border-radius:9999px 0 0 9999px;"></div>
+                  <div style="flex:18;background:#E8E3DC;"></div>
+                  <div style="flex:10;background:#F4F1EC;border-radius:0 9999px 9999px 0;"></div>
+                </div>
+                <div style="display:flex;gap:1.25rem;margin-top:7px;">
+                  <span style="font-family:'DM Sans',sans-serif;font-size:0.71rem;font-weight:300;color:#7A7469;">72% positive</span>
+                  <span style="font-family:'DM Sans',sans-serif;font-size:0.71rem;font-weight:300;color:#7A7469;">18% neutral</span>
+                  <span style="font-family:'DM Sans',sans-serif;font-size:0.71rem;font-weight:300;color:#7A7469;">10% critical</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="service-text order-1">
+        <div class="svc-tab-bar" data-group="reviews">
+          <button class="svc-tab active" data-tab="reviews-auto">Review Replies</button>
+          <button class="svc-tab" data-tab="reviews-reporting">Reporting &amp; Tracking</button>
+        </div>
+        <div id="svc-copy-reviews-auto">
+          <h2 class="font-serif mb-3" style="font-size:clamp(1.68rem,2.7vw,2.2rem);font-weight:500;color:#1C1B19;letter-spacing:-0.02em;">Review Replies</h2>
+          <p class="pain-quote">
+            "Most unhappy guests don't complain at the table. They write a review later, when you are not there to respond. A generic reply - or no reply at all - tells the next guest everything they need to know."
+          </p>
+          <h3 class="font-serif mb-4" style="font-size:clamp(1.32rem,2.2vw,1.78rem);font-weight:300;color:#1C1B19;letter-spacing:-0.02em;">Every review answered. In your voice, not a template.</h3>
+          <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.7;letter-spacing:-0.01em;">
+            Each response is written to match your brand tone and the specific context of the review. Automated, but never generic. We handle every platform - Google, TripAdvisor, Booking.com - so nothing goes unanswered.
+          </p>
+        </div>
+        <div id="svc-copy-reviews-reporting" style="display:none;">
+          <h2 class="font-serif mb-3" style="font-size:clamp(1.68rem,2.7vw,2.2rem);font-weight:500;color:#1C1B19;letter-spacing:-0.02em;">Reporting &amp; Tracking</h2>
+          <p class="pain-quote">
+            "You can't improve what you don't track. Most operators have no idea which dishes get flagged, which staff members get named, or whether things are getting better or worse."
+          </p>
+          <h3 class="font-serif mb-4" style="font-size:clamp(1.32rem,2.2vw,1.78rem);font-weight:300;color:#1C1B19;letter-spacing:-0.02em;">Know exactly what your guests think. Act on it.</h3>
+          <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.7;letter-spacing:-0.01em;">
+            All reviews are stored in a structured database. We detect patterns in guest feedback, flag staff mentions, track recurring issues, and deliver a monthly report. You always know what is working and what needs attention.
+          </p>
+        </div>
+        <div id="svc-stats-reviews-auto" class="row-stats mt-8">
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">89%</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">of guests read reviews before visiting</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">100%</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">response rate across every platform</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">Brand</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">voice replies, never a template</p>
+          </div>
+        </div>
+        <div id="svc-stats-reviews-reporting" class="row-stats stats-hidden mt-8">
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">Full</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">review history stored and structured every month</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">3 platforms</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">pattern detection across Google, TripAdvisor and Booking.com</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">Auto</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">staff mentions and recurring issues flagged automatically</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 7: Gift Card System  -  text LEFT, visual RIGHT -->
+    <div class="service-row reveal" data-svc="gift">
+      <div class="service-row-intro">
+        <p class="font-serif">Extra Revenue</p>
+      </div>
+      <div class="service-text order-1">
+        <h2 class="font-serif mb-3" style="font-size:clamp(1.68rem,2.7vw,2.2rem);font-weight:500;color:#1C1B19;letter-spacing:-0.02em;">Gift Card System</h2>
+        <p class="pain-quote">
+          "Guests want to give your restaurant or hotel as a gift for birthdays, anniversaries and special occasions. Without a system in place, that revenue simply does not exist."
+        </p>
+        <h3 class="font-serif mb-4" style="font-size:clamp(1.32rem,2.2vw,1.78rem);font-weight:300;color:#1C1B19;letter-spacing:-0.02em;">A branded gifting experience, fully automated.</h3>
+        <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.7;letter-spacing:-0.01em;">
+          A gift card system integrated directly into your website. The guest fills a form, a personalized card is generated and delivered by email automatically. Zero admin on your end. Fully branded to your identity.
+        </p>
+        <div class="row-stats mt-8">
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">20%</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">avg. extra revenue per gift card sold</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">Zero</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">admin on your end - fully automated</p>
+          </div>
+          <div class="stat-item">
+            <p class="font-serif mb-1" style="font-size:2rem;font-weight:300;color:#1C1B19;line-height:1;">Branded</p>
+            <p class="font-sans text-xs leading-snug" style="font-weight:300;color:#7A7469;">to your identity, delivered by email</p>
+          </div>
+        </div>
+      </div>
+      <div class="service-visual order-2" id="svc-visual-gift" style="position:relative;padding:0;background:#FAFAF8;">
+        <div style="position:relative;z-index:1;display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:2rem;">
+
+          <div class="glass-card" style="width:100%;">
+            <div style="width:100%;height:540px;overflow:hidden;border-radius:6px;box-shadow:0 8px 32px rgba(28,27,25,0.18);background:#F4F1EC;">
+              <img src="assets/mockups_tarjeta_invitacion3.webp" alt="Gift card system visual" style="width:100%;height:100%;display:block;object-fit:cover;object-position:center;" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- PLANS SECTION -->
+  <section id="plans" style="background:#F4F1EC;padding:6.5rem 1.25rem;">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="section-label mb-5">Monthly Plans</p>
+        <h2 class="font-serif leading-tight mb-4" style="font-size:clamp(1.875rem,3.5vw,2.75rem);font-weight:300;color:#1C1B19;letter-spacing:-0.02em;">Everything bundled. Nothing wasted.</h2>
+        <p class="font-sans" style="font-size:0.9375rem;font-weight:300;color:#7A7469;max-width:440px;margin:0 auto;line-height:1.65;letter-spacing:-0.01em;">Everything your hospitality brand needs to grow consistently.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Card 1: Presence -->
+        <div class="flex flex-col" style="background:#FAFAF8;border:1px solid #E8E3DC;border-radius:12px;padding:2.5rem 2rem;box-shadow:0 2px 12px rgba(28,27,25,0.06);transition:box-shadow 300ms ease,transform 300ms ease;" onmouseover="this.style.boxShadow='0 8px 32px rgba(28,27,25,0.10)';this.style.transform='translateY(-2px)';" onmouseout="this.style.boxShadow='0 2px 12px rgba(28,27,25,0.06)';this.style.transform='translateY(0)';">
+          <div class="mb-5">
+            <p class="section-label mb-4">Get Found</p>
+            <h3 class="font-serif" style="font-size:2rem;font-weight:300;color:#1C1B19;letter-spacing:-0.02em;line-height:1.1;">Presence</h3>
+            <p class="font-sans" style="font-size:0.75rem;font-weight:300;color:#7A7469;margin-top:4px;">from 450€ setup</p>
+          </div>
+          <p class="font-serif" style="font-size:2.5rem;font-weight:300;color:#1C1B19;letter-spacing:-0.02em;line-height:1;margin-bottom:1.75rem;">from 417€<span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#7A7469;">/mo</span></p>
+          <ul style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;flex:1;">
+            <li style="display:flex;align-items:flex-start;gap:0.625rem;">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="flex-shrink:0;margin-top:2px;"><path d="M2 6.5l3 3 6-6" stroke="#7A7469" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#1C1B19;line-height:1.5;">
+                <span class="plan-inline-feature">
+                  <span class="plan-inline-term">
+                    <button type="button" class="plan-inline-trigger" aria-label="SEO information">
+                      <span>SEO</span>
+                      <span class="plan-inline-icon" aria-hidden="true">?</span>
+                    </button>
+                    <span class="plan-inline-tooltip">SEO helps your business appear on Google and search engines.</span>
+                  </span>
+                  <span>+</span>
+                  <span class="plan-inline-term">
+                    <button type="button" class="plan-inline-trigger" aria-label="GEO information">
+                      <span>GEO</span>
+                      <span class="plan-inline-icon" aria-hidden="true">?</span>
+                    </button>
+                    <span class="plan-inline-tooltip">GEO helps your business appear inside AI tools like ChatGPT and Gemini.</span>
+                  </span>
+                </span>
+              </span>
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:0.625rem;">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="flex-shrink:0;margin-top:2px;"><path d="M2 6.5l3 3 6-6" stroke="#7A7469" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#1C1B19;line-height:1.5;">Google Business Profile Optimization</span>
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:0.625rem;">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="flex-shrink:0;margin-top:2px;"><path d="M2 6.5l3 3 6-6" stroke="#7A7469" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#1C1B19;line-height:1.5;">Google Maps Visibility</span>
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:0.625rem;">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="flex-shrink:0;margin-top:2px;"><path d="M2 6.5l3 3 6-6" stroke="#7A7469" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#1C1B19;line-height:1.5;">Review Monitoring</span>
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:0.625rem;">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="flex-shrink:0;margin-top:2px;"><path d="M2 6.5l3 3 6-6" stroke="#7A7469" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#1C1B19;line-height:1.5;">Performance Reports</span>
+            </li>
+          </ul>
+          <a href="https://wa.me/212781571863?text=Hello%20I%27m%20interested%20in%20%22Presence%22%20plan%20for%20my%20business" target="_blank" rel="noopener" class="font-sans text-sm text-center block" style="display:block;text-align:center;padding:0.65rem 1.4rem;border-radius:6px;font-size:0.8125rem;font-weight:300;letter-spacing:-0.01em;color:#1C1B19;text-decoration:none;border:1px solid #1C1B19;background:transparent;">
+            I want it
+          </a>
+        </div>
+
+        <!-- Card 2: Growth (featured) -->
+        <div class="flex flex-col relative" style="background:#FAFAF8;border:1px solid #1C1B19;border-radius:12px;padding:2.5rem 2rem;box-shadow:0 8px 36px rgba(28,27,25,0.12);transition:box-shadow 300ms ease,transform 300ms ease;" onmouseover="this.style.boxShadow='0 16px 48px rgba(28,27,25,0.16)';this.style.transform='translateY(-2px)';" onmouseout="this.style.boxShadow='0 8px 36px rgba(28,27,25,0.12)';this.style.transform='translateY(0)';">
+          <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);">
+            <span class="font-sans" style="font-size:0.7rem;font-weight:300;color:#1C1B19;letter-spacing:0.06em;text-transform:uppercase;background:#FAFAF8;border:1px solid #1C1B19;border-radius:9999px;padding:3px 14px;white-space:nowrap;">Most Popular</span>
+          </div>
+          <div class="mb-5">
+            <p class="section-label mb-4">Get Chosen</p>
+            <h3 class="font-serif" style="font-size:2rem;font-weight:300;color:#1C1B19;letter-spacing:-0.02em;line-height:1.1;">Growth</h3>
+            <p class="font-sans" style="font-size:0.75rem;font-weight:300;color:#7A7469;margin-top:4px;">from 650€ setup</p>
+          </div>
+          <p class="font-serif" style="font-size:2.5rem;font-weight:300;color:#1C1B19;letter-spacing:-0.02em;line-height:1;margin-bottom:1.75rem;">from 770€<span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#7A7469;">/mo</span></p>
+          <ul style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;flex:1;">
+            <li style="display:flex;align-items:flex-start;gap:0.625rem;">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="flex-shrink:0;margin-top:2px;"><path d="M2 6.5l3 3 6-6" stroke="#7A7469" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#1C1B19;line-height:1.5;">Everything in Presence</span>
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:0.625rem;">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="flex-shrink:0;margin-top:2px;"><path d="M2 6.5l3 3 6-6" stroke="#7A7469" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#1C1B19;line-height:1.5;">Social Media Management</span>
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:0.625rem;">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="flex-shrink:0;margin-top:2px;"><path d="M2 6.5l3 3 6-6" stroke="#7A7469" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#1C1B19;line-height:1.5;">Review Response System</span>
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:0.625rem;">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="flex-shrink:0;margin-top:2px;"><path d="M2 6.5l3 3 6-6" stroke="#7A7469" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#1C1B19;line-height:1.5;">Reputation Tracking</span>
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:0.625rem;">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="flex-shrink:0;margin-top:2px;"><path d="M2 6.5l3 3 6-6" stroke="#7A7469" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#1C1B19;line-height:1.5;">Customer Insights Reports</span>
+            </li>
+          </ul>
+          <a href="https://wa.me/212781571863?text=Hello%20I%27m%20interested%20in%20%22Growth%22%20plan%20for%20my%20business" target="_blank" rel="noopener" class="font-sans text-sm text-center block" style="display:block;text-align:center;padding:0.65rem 1.4rem;border-radius:6px;font-size:0.8125rem;font-weight:300;letter-spacing:-0.01em;color:#1C1B19;text-decoration:none;border:1px solid #1C1B19;background:transparent;">
+            I want it
+          </a>
+        </div>
+
+        <!-- Card 3: Full Stack -->
+        <div class="flex flex-col" style="background:#FAFAF8;border:1px solid #E8E3DC;border-radius:12px;padding:2.5rem 2rem;box-shadow:0 2px 12px rgba(28,27,25,0.06);transition:box-shadow 300ms ease,transform 300ms ease;" onmouseover="this.style.boxShadow='0 8px 32px rgba(28,27,25,0.10)';this.style.transform='translateY(-2px)';" onmouseout="this.style.boxShadow='0 2px 12px rgba(28,27,25,0.06)';this.style.transform='translateY(0)';">
+          <div class="mb-5">
+            <p class="section-label mb-4">Get Automated</p>
+            <h3 class="font-serif" style="font-size:2rem;font-weight:300;color:#1C1B19;letter-spacing:-0.02em;line-height:1.1;">Full Stack</h3>
+            <p class="font-sans" style="font-size:0.75rem;font-weight:300;color:#7A7469;margin-top:4px;">from 1.170€ setup</p>
+          </div>
+          <p class="font-serif" style="font-size:2.5rem;font-weight:300;color:#1C1B19;letter-spacing:-0.02em;line-height:1;margin-bottom:1.75rem;">from 1,270€<span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#7A7469;">/mo</span></p>
+          <ul style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;flex:1;">
+            <li style="display:flex;align-items:flex-start;gap:0.625rem;">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="flex-shrink:0;margin-top:2px;"><path d="M2 6.5l3 3 6-6" stroke="#7A7469" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#1C1B19;line-height:1.5;">Everything in Growth</span>
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:0.625rem;">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="flex-shrink:0;margin-top:2px;"><path d="M2 6.5l3 3 6-6" stroke="#7A7469" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#1C1B19;line-height:1.5;">WhatsApp AI Concierge</span>
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:0.625rem;">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="flex-shrink:0;margin-top:2px;"><path d="M2 6.5l3 3 6-6" stroke="#7A7469" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#1C1B19;line-height:1.5;">Voice AI Agent</span>
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:0.625rem;">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="flex-shrink:0;margin-top:2px;"><path d="M2 6.5l3 3 6-6" stroke="#7A7469" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#1C1B19;line-height:1.5;">Gift Card Automation</span>
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:0.625rem;">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="flex-shrink:0;margin-top:2px;"><path d="M2 6.5l3 3 6-6" stroke="#7A7469" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#1C1B19;line-height:1.5;">Staff Onboarding App</span>
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:0.625rem;">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="flex-shrink:0;margin-top:2px;"><path d="M2 6.5l3 3 6-6" stroke="#7A7469" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#1C1B19;line-height:1.5;">Custom Automations</span>
+            </li>
+          </ul>
+          <a href="https://wa.me/212781571863?text=Hello%20I%27m%20interested%20in%20%22Full%20Stack%22%20plan%20for%20my%20business" target="_blank" rel="noopener" class="font-sans text-sm text-center block" style="display:block;text-align:center;padding:0.65rem 1.4rem;border-radius:6px;font-size:0.8125rem;font-weight:300;letter-spacing:-0.01em;color:#1C1B19;text-decoration:none;border:1px solid #1C1B19;background:transparent;">
+            I want it
+          </a>
+        </div>
+
+      </div>
+
+      <div style="display:flex;justify-content:center;margin-top:3rem;">
+        <div style="margin-bottom:0;">
+          <a href="https://wa.me/212781571863" target="_blank" rel="noopener" class="svc-tab" style="display:inline-block;padding:0.65rem 1.4rem;background:#001B3A;color:#ffffff;text-decoration:none;border-radius:4px;font-size:0.84rem;box-shadow:3px 3px 8px rgba(28,27,25,0.14), inset 0 1px 0 rgba(255,255,255,0.12);transform:translateY(0);transition:transform 140ms ease, box-shadow 140ms ease;" onmouseover="this.style.transform='translateY(1px)';this.style.boxShadow='2px 2px 6px rgba(28,27,25,0.12), inset 0 1px 0 rgba(255,255,255,0.10)';" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='3px 3px 8px rgba(28,27,25,0.14), inset 0 1px 0 rgba(255,255,255,0.12)';" onmousedown="this.style.transform='translateY(2px)';this.style.boxShadow='1px 1px 4px rgba(28,27,25,0.10), inset 0 1px 0 rgba(255,255,255,0.08)';" onmouseup="this.style.transform='translateY(1px)';this.style.boxShadow='2px 2px 6px rgba(28,27,25,0.12), inset 0 1px 0 rgba(255,255,255,0.10)';">
+            Not sure where to start? Schedule a free call
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section id="faq" style="background:#FAFAF8;padding:0 0 7.5rem;margin-top:3.25rem;">
+    <!-- Debossed title row — identical pattern to service rows -->
+    <div style="padding:0 3rem 1rem;display:flex;justify-content:center;align-items:center;text-align:center;">
+      <p class="font-serif" style="margin:0;font-size:clamp(3.15rem,8vw,7.4rem);font-weight:500;color:#FAFAF8;letter-spacing:-0.03em;line-height:0.96;text-shadow:-1px -1px 0px rgba(28,27,25,0.15),1px 1px 0px rgba(255,255,255,0.75);-webkit-text-stroke:0.5px rgba(28,27,25,0.08);">FAQ</p>
+    </div>
+
+    <div class="max-w-3xl mx-auto" style="padding:0 1.25rem;">
+      <div style="display:flex;flex-direction:column;gap:0;">
+
+        <!-- Q1 -->
+        <div class="faq-item">
+          <button class="faq-trigger" style="width:100%;display:flex;justify-content:space-between;align-items:baseline;gap:2rem;background:none;border:none;cursor:pointer;padding:2rem 0;text-align:left;">
+            <p class="font-serif" style="font-size:clamp(1.15rem,2vw,1.45rem);font-weight:300;color:#1C1B19;line-height:1.3;letter-spacing:-0.02em;margin:0;">What makes Kensho different from other digital marketing agencies?</p>
+            <span class="faq-mark font-serif" style="font-size:1.6rem;font-weight:300;color:#C8C2BA;line-height:1;flex-shrink:0;transition:color 280ms ease,transform 280ms ease;display:block;">+</span>
+          </button>
+          <div class="faq-body" style="overflow:hidden;max-height:0;transition:max-height 500ms cubic-bezier(0.16,1,0.3,1);">
+            <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.8;letter-spacing:-0.01em;padding-bottom:2rem;margin:0;">Kensho was built from direct hospitality experience, not just marketing theory. We have worked inside luxury hotels, restaurants and hospitality operations ourselves, which means we understand the real day-to-day pressures behind service, reservations, guest experience, staffing, reviews and operations. That operational understanding is combined with modern AI systems, SEO, content strategy and continuous research into hospitality trends, technology and guest behavior.</p>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="faq-item" style="border-top:1px solid rgba(232,227,220,0.5);">
+          <button class="faq-trigger" style="width:100%;display:flex;justify-content:space-between;align-items:baseline;gap:2rem;background:none;border:none;cursor:pointer;padding:2rem 0;text-align:left;">
+            <p class="font-serif" style="font-size:clamp(1.15rem,2vw,1.45rem);font-weight:300;color:#1C1B19;line-height:1.3;letter-spacing:-0.02em;margin:0;">What type of hospitality businesses do you work with?</p>
+            <span class="faq-mark font-serif" style="font-size:1.6rem;font-weight:300;color:#C8C2BA;line-height:1;flex-shrink:0;transition:color 280ms ease,transform 280ms ease;display:block;">+</span>
+          </button>
+          <div class="faq-body" style="overflow:hidden;max-height:0;transition:max-height 500ms cubic-bezier(0.16,1,0.3,1);">
+            <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.8;letter-spacing:-0.01em;padding-bottom:2rem;margin:0;">We work with restaurants, hotels, resorts, rooftops, beach clubs, spas, riads, concierge companies, hospitality groups, nightlife concepts, dinner shows and hospitality-focused agencies. Every strategy is adapted to the type of guest experience and audience each business is targeting.</p>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="faq-item" style="border-top:1px solid rgba(232,227,220,0.5);">
+          <button class="faq-trigger" style="width:100%;display:flex;justify-content:space-between;align-items:baseline;gap:2rem;background:none;border:none;cursor:pointer;padding:2rem 0;text-align:left;">
+            <p class="font-serif" style="font-size:clamp(1.15rem,2vw,1.45rem);font-weight:300;color:#1C1B19;line-height:1.3;letter-spacing:-0.02em;margin:0;">Why are some restaurants and hotels appearing inside AI search results now?</p>
+            <span class="faq-mark font-serif" style="font-size:1.6rem;font-weight:300;color:#C8C2BA;line-height:1;flex-shrink:0;transition:color 280ms ease,transform 280ms ease;display:block;">+</span>
+          </button>
+          <div class="faq-body" style="overflow:hidden;max-height:0;transition:max-height 500ms cubic-bezier(0.16,1,0.3,1);">
+            <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.8;letter-spacing:-0.01em;padding-bottom:2rem;margin:0;">AI platforms like ChatGPT, Gemini, Claude and Perplexity are already influencing how people choose restaurants, hotels and travel experiences. Businesses with stronger digital signals, structured information, reviews, authority and online visibility are more likely to appear in these recommendations. This is becoming one of the biggest visibility shifts in hospitality.</p>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="faq-item" style="border-top:1px solid rgba(232,227,220,0.5);">
+          <button class="faq-trigger" style="width:100%;display:flex;justify-content:space-between;align-items:baseline;gap:2rem;background:none;border:none;cursor:pointer;padding:2rem 0;text-align:left;">
+            <p class="font-serif" style="font-size:clamp(1.15rem,2vw,1.45rem);font-weight:300;color:#1C1B19;line-height:1.3;letter-spacing:-0.02em;margin:0;">Can AI actually help increase direct bookings and revenue?</p>
+            <span class="faq-mark font-serif" style="font-size:1.6rem;font-weight:300;color:#C8C2BA;line-height:1;flex-shrink:0;transition:color 280ms ease,transform 280ms ease;display:block;">+</span>
+          </button>
+          <div class="faq-body" style="overflow:hidden;max-height:0;transition:max-height 500ms cubic-bezier(0.16,1,0.3,1);">
+            <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.8;letter-spacing:-0.01em;padding-bottom:2rem;margin:0;">Yes. AI tools can automate guest communication, improve response times, optimize visibility and reduce operational friction, all of which can increase direct reservations and reduce dependence on OTAs.</p>
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="faq-item" style="border-top:1px solid rgba(232,227,220,0.5);">
+          <button class="faq-trigger" style="width:100%;display:flex;justify-content:space-between;align-items:baseline;gap:2rem;background:none;border:none;cursor:pointer;padding:2rem 0;text-align:left;">
+            <p class="font-serif" style="font-size:clamp(1.15rem,2vw,1.45rem);font-weight:300;color:#1C1B19;line-height:1.3;letter-spacing:-0.02em;margin:0;">Why is Google Business Profile so important for restaurants and hotels today?</p>
+            <span class="faq-mark font-serif" style="font-size:1.6rem;font-weight:300;color:#C8C2BA;line-height:1;flex-shrink:0;transition:color 280ms ease,transform 280ms ease;display:block;">+</span>
+          </button>
+          <div class="faq-body" style="overflow:hidden;max-height:0;transition:max-height 500ms cubic-bezier(0.16,1,0.3,1);">
+            <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.8;letter-spacing:-0.01em;padding-bottom:2rem;margin:0;">For many hospitality businesses, Google Business Profile is now just as important as the website itself, sometimes even more. Most guests search directly on Google Maps before deciding where to go, especially on mobile. Reviews, photos, opening hours, location, menu information and overall activity directly affect whether someone chooses your business or your competitor.</p>
+          </div>
+        </div>
+
+        <!-- Show more trigger -->
+        <div id="faq-show-more" style="padding:1.5rem 0 0.5rem;">
+          <button onclick="(function(){var el=document.getElementById('faq-extra');var btn=document.getElementById('faq-show-more');el.style.display='block';btn.style.display='none';})()" style="background:none;border:none;cursor:pointer;padding:0;display:flex;align-items:center;gap:0.5rem;">
+            <span class="font-sans" style="font-size:0.75rem;font-weight:300;color:#C8C2BA;letter-spacing:0;">More questions</span>
+            <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#C8C2BA" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+        <!-- Q6–10 hidden -->
+        <div id="faq-extra" style="display:none;">
+
+        <!-- Q6 -->
+        <div class="faq-item" style="border-top:1px solid rgba(232,227,220,0.5);">
+          <button class="faq-trigger" style="width:100%;display:flex;justify-content:space-between;align-items:baseline;gap:2rem;background:none;border:none;cursor:pointer;padding:2rem 0;text-align:left;">
+            <p class="font-serif" style="font-size:clamp(1.15rem,2vw,1.45rem);font-weight:300;color:#1C1B19;line-height:1.3;letter-spacing:-0.02em;margin:0;">Why do most hospitality social media accounts fail to generate real business?</p>
+            <span class="faq-mark font-serif" style="font-size:1.6rem;font-weight:300;color:#C8C2BA;line-height:1;flex-shrink:0;transition:color 280ms ease;display:block;">+</span>
+          </button>
+          <div class="faq-body" style="overflow:hidden;max-height:0;transition:max-height 500ms cubic-bezier(0.16,1,0.3,1);">
+            <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.8;letter-spacing:-0.01em;padding-bottom:2rem;margin:0;">Because most hospitality brands post without a clear positioning, visual identity or guest psychology behind the content. Random food photos and inconsistent posting rarely create desire or trust. Hospitality content should communicate atmosphere, status, emotion and experience, not just products.</p>
+          </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="faq-item" style="border-top:1px solid rgba(232,227,220,0.5);">
+          <button class="faq-trigger" style="width:100%;display:flex;justify-content:space-between;align-items:baseline;gap:2rem;background:none;border:none;cursor:pointer;padding:2rem 0;text-align:left;">
+            <p class="font-serif" style="font-size:clamp(1.15rem,2vw,1.45rem);font-weight:300;color:#1C1B19;line-height:1.3;letter-spacing:-0.02em;margin:0;">Do you only focus on social media and advertising?</p>
+            <span class="faq-mark font-serif" style="font-size:1.6rem;font-weight:300;color:#C8C2BA;line-height:1;flex-shrink:0;transition:color 280ms ease;display:block;">+</span>
+          </button>
+          <div class="faq-body" style="overflow:hidden;max-height:0;transition:max-height 500ms cubic-bezier(0.16,1,0.3,1);">
+            <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.8;letter-spacing:-0.01em;padding-bottom:2rem;margin:0;">No. Kensho combines branding, SEO, GEO, websites, AI systems, Google visibility, automation, content production and operational tools into a broader hospitality growth strategy. Social media is only one part of the ecosystem.</p>
+          </div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="faq-item" style="border-top:1px solid rgba(232,227,220,0.5);">
+          <button class="faq-trigger" style="width:100%;display:flex;justify-content:space-between;align-items:baseline;gap:2rem;background:none;border:none;cursor:pointer;padding:2rem 0;text-align:left;">
+            <p class="font-serif" style="font-size:clamp(1.15rem,2vw,1.45rem);font-weight:300;color:#1C1B19;line-height:1.3;letter-spacing:-0.02em;margin:0;">Can you help reduce dependence on Booking.com and OTAs?</p>
+            <span class="faq-mark font-serif" style="font-size:1.6rem;font-weight:300;color:#C8C2BA;line-height:1;flex-shrink:0;transition:color 280ms ease;display:block;">+</span>
+          </button>
+          <div class="faq-body" style="overflow:hidden;max-height:0;transition:max-height 500ms cubic-bezier(0.16,1,0.3,1);">
+            <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.8;letter-spacing:-0.01em;padding-bottom:2rem;margin:0;">Yes. One of the main goals is increasing direct visibility and direct reservations through SEO, GEO, Google Business optimization, stronger branding and better digital infrastructure.</p>
+          </div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="faq-item" style="border-top:1px solid rgba(232,227,220,0.5);">
+          <button class="faq-trigger" style="width:100%;display:flex;justify-content:space-between;align-items:baseline;gap:2rem;background:none;border:none;cursor:pointer;padding:2rem 0;text-align:left;">
+            <p class="font-serif" style="font-size:clamp(1.15rem,2vw,1.45rem);font-weight:300;color:#1C1B19;line-height:1.3;letter-spacing:-0.02em;margin:0;">Why do so many hospitality websites fail to convert visitors into bookings?</p>
+            <span class="faq-mark font-serif" style="font-size:1.6rem;font-weight:300;color:#C8C2BA;line-height:1;flex-shrink:0;transition:color 280ms ease;display:block;">+</span>
+          </button>
+          <div class="faq-body" style="overflow:hidden;max-height:0;transition:max-height 500ms cubic-bezier(0.16,1,0.3,1);">
+            <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.8;letter-spacing:-0.01em;padding-bottom:2rem;margin:0;">Most hospitality websites are either outdated, slow, visually generic or badly structured for modern guest behavior. Guests decide extremely quickly whether a place feels trustworthy, premium and worth booking. Small details in design, speed, visuals and structure heavily affect conversion.</p>
+          </div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="faq-item" style="border-top:1px solid rgba(232,227,220,0.5);border-bottom:1px solid rgba(232,227,220,0.5);">
+          <button class="faq-trigger" style="width:100%;display:flex;justify-content:space-between;align-items:baseline;gap:2rem;background:none;border:none;cursor:pointer;padding:2rem 0;text-align:left;">
+            <p class="font-serif" style="font-size:clamp(1.15rem,2vw,1.45rem);font-weight:300;color:#1C1B19;line-height:1.3;letter-spacing:-0.02em;margin:0;">Is AI replacing hospitality jobs?</p>
+            <span class="faq-mark font-serif" style="font-size:1.6rem;font-weight:300;color:#C8C2BA;line-height:1;flex-shrink:0;transition:color 280ms ease;display:block;">+</span>
+          </button>
+          <div class="faq-body" style="overflow:hidden;max-height:0;transition:max-height 500ms cubic-bezier(0.16,1,0.3,1);">
+            <p class="font-sans" style="font-size:0.875rem;font-weight:300;color:#7A7469;line-height:1.8;letter-spacing:-0.01em;padding-bottom:2rem;margin:0;">No. In hospitality, AI works best as support infrastructure, not as a replacement for human service. The goal is reducing repetitive operational tasks, improving response times and helping teams operate more efficiently while keeping the human experience intact.</p>
+          </div>
+        </div>
+
+        </div><!-- /faq-extra -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer></footer>
+
+  <script defer src="main.js"></script>
+
+  <script>
+    // ── Service row tab switching ────────────────────────────────────────────────
+    (function initServiceTabs() {
+      const tabBars = document.querySelectorAll('.svc-tab-bar');
+      tabBars.forEach(bar => {
+        if (!bar.dataset.group) return;
+        const group = bar.dataset.group;
+        const tabs = bar.querySelectorAll('.svc-tab');
+
+        const pill = document.createElement('div');
+        pill.className = 'tab-slider-pill';
+        bar.insertBefore(pill, bar.firstChild);
+
+        const initActive = bar.querySelector('.svc-tab.active');
+        if (initActive) {
+          gsap.set(pill, { left: initActive.offsetLeft, width: initActive.offsetWidth });
+        }
+
+        tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            if (tab.classList.contains('active')) return;
+
+            const target = tab.dataset.tab;
+            const sub = target.split('-').slice(1).join('-');
+
+            function fadeSwap(hideEl, showEl) {
+              if (!hideEl || !showEl || hideEl === showEl) return;
+              hideEl.style.transition = 'opacity 200ms ease';
+              hideEl.style.opacity = '0';
+              setTimeout(() => {
+                hideEl.style.display = 'none';
+                hideEl.style.opacity = '';
+                showEl.style.display = '';
+                showEl.style.opacity = '0';
+                requestAnimationFrame(() => {
+                  showEl.style.transition = 'opacity 200ms ease';
+                  showEl.style.opacity = '1';
+                  setTimeout(() => { showEl.style.transition = ''; }, 220);
+                });
+              }, 200);
+            }
+
+            gsap.to(pill, {
+              left: tab.offsetLeft,
+              width: tab.offsetWidth,
+              duration: 0.35,
+              ease: 'power2.inOut',
+              onComplete: () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                const allCopies = document.querySelectorAll('[id^="svc-copy-' + group + '-"]');
+                const targetCopy = document.getElementById('svc-copy-' + group + '-' + sub);
+                allCopies.forEach(c => {
+                  if (c !== targetCopy && c.style.display !== 'none') {
+                    fadeSwap(c, targetCopy);
+                  }
+                });
+
+                const visualContainer = document.getElementById('svc-visual-' + group);
+                if (visualContainer) {
+                  const allVisuals = visualContainer.querySelectorAll('.glass-card');
+                  const targetVisual = document.getElementById('svc-visual-' + group + '-' + sub);
+                  allVisuals.forEach(v => {
+                    if (v !== targetVisual && v.style.display !== 'none') {
+                      fadeSwap(v, targetVisual);
+                    }
+                  });
+                }
+
+                const allStats = document.querySelectorAll('[id^="svc-stats-' + group + '-"]');
+                const targetStats = document.getElementById('svc-stats-' + group + '-' + sub);
+                if (targetStats) {
+                  allStats.forEach(s => {
+                    if (s !== targetStats && !s.classList.contains('stats-hidden')) {
+                      s.style.transition = 'opacity 200ms ease';
+                      s.style.opacity = '0';
+                      setTimeout(() => {
+                        s.classList.add('stats-hidden');
+                        s.style.opacity = '';
+                        s.style.transition = '';
+                        targetStats.classList.remove('stats-hidden');
+                        targetStats.style.opacity = '0';
+                        requestAnimationFrame(() => {
+                          targetStats.style.transition = 'opacity 200ms ease';
+                          targetStats.style.opacity = '1';
+                          setTimeout(() => { targetStats.style.transition = ''; }, 220);
+                        });
+                      }, 200);
+                    }
+                  });
+                }
+              }
+            });
+          });
+        });
+      });
+    })();
+
+    // ── Override main.js chrome with English hospitality content ─────────────
+    document.addEventListener('DOMContentLoaded', function() {
+      // Header: desktop nav
+      const desktopNav = document.querySelector('#header nav.hidden.md\\:flex');
+      if (desktopNav) {
+        desktopNav.innerHTML = `
+          <a href="#services" class="nav-link font-sans text-[0.8125rem] tracking-normal">Services</a>
+          <a href="#about" class="nav-link font-sans text-[0.8125rem] tracking-normal">About</a>
+          <a href="#plans" class="nav-link font-sans text-[0.8125rem] tracking-normal">Plans</a>
+        `;
+      }
+      // Header: desktop CTA
+      const desktopCTAContainer = document.querySelector('#header .hidden.md\\:flex.items-center.gap-4');
+      if (desktopCTAContainer) {
+        desktopCTAContainer.innerHTML = `
+          <a href="https://wa.me/212781571863" target="_blank" rel="noopener" class="font-sans text-sm" style="background:rgba(255,255,255,0.12);color:#ffffff;border:1px solid rgba(255,255,255,0.26);border-radius:9999px;padding:0.34rem 0.95rem;font-weight:400;letter-spacing:-0.015em;line-height:1.1;transition:background-color 200ms ease,border-color 200ms ease,opacity 200ms ease,box-shadow 200ms ease;display:inline-block;backdrop-filter:blur(14px) saturate(150%);-webkit-backdrop-filter:blur(14px) saturate(150%);box-shadow:inset 0 1px 0 rgba(255,255,255,0.34);">Contact</a>
+        `;
+      }
+      // Header: mobile menu links
+      const mobileLinks = document.querySelector('#header .mobile-menu-links');
+      if (mobileLinks) {
+        mobileLinks.innerHTML = `
+          <a href="#services" class="font-sans mobile-menu-link text-charcoal hover:text-brown transition-colors" onclick="closeMobileMenu()">Services</a>
+          <a href="#about" class="font-sans mobile-menu-link text-charcoal hover:text-brown transition-colors" onclick="closeMobileMenu()">About</a>
+          <a href="#plans" class="font-sans mobile-menu-link text-charcoal hover:text-brown transition-colors" onclick="closeMobileMenu()">Plans</a>
+          <a href="https://wa.me/212781571863" target="_blank" rel="noopener" class="font-sans mobile-menu-link text-charcoal hover:text-brown transition-colors" onclick="closeMobileMenu()">Contact</a>
+        `;
+      }
+      // Header: mobile CTA
+      const mobileActions = document.querySelector('#header .mobile-menu-actions');
+      if (mobileActions) {
+        mobileActions.innerHTML = `
+          <a href="https://wa.me/212781571863" target="_blank" rel="noopener" class="font-sans text-sm text-center" style="background:rgba(255,255,255,0.12);color:#ffffff;border:1px solid rgba(255,255,255,0.26);border-radius:9999px;padding:0.34rem 0.95rem;font-weight:400;letter-spacing:-0.015em;line-height:1.1;transition:background-color 200ms ease,border-color 200ms ease,opacity 200ms ease,box-shadow 200ms ease;display:block;backdrop-filter:blur(14px) saturate(150%);-webkit-backdrop-filter:blur(14px) saturate(150%);box-shadow:inset 0 1px 0 rgba(255,255,255,0.34);" onclick="closeMobileMenu()">Contact</a>
+        `;
+      }
+
+      // Footer: replace entirely with English content
+      const footer = document.querySelector('footer');
+      if (footer) {
+        const currentYear = new Date().getFullYear();
+        footer.innerHTML = `
+          <div class="max-w-7xl mx-auto">
+            <div class="mb-10 md:mb-12">
+              <a href="index.html" class="inline-flex items-center leading-none">
+                <img src="assets/logo_kensho/KenshoRLogoWhite.webp" alt="Kensho" style="height:2.65rem; width:auto; display:block;" />
+              </a>
+              <p class="font-sans font-light text-[rgba(255,255,255,0.72)] text-sm mt-3">Digital Marketing &amp; AI for Hospitality Brands in Marrakech.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 mb-10">
+              <div>
+                <p class="font-sans text-xs tracking-widest uppercase mb-4" style="color:rgba(255,255,255,0.9);">NAVIGATE</p>
+                <ul class="flex flex-wrap items-center gap-x-6 gap-y-3">
+                  <li><a href="#hero" class="font-sans text-sm transition-colors" style="color:rgba(255,255,255,0.72);" onmouseover="this.style.color='rgba(255,255,255,0.96)'" onmouseout="this.style.color='rgba(255,255,255,0.72)'">Home</a></li>
+                  <li><a href="#services" class="font-sans text-sm transition-colors" style="color:rgba(255,255,255,0.72);" onmouseover="this.style.color='rgba(255,255,255,0.96)'" onmouseout="this.style.color='rgba(255,255,255,0.72)'">Services</a></li>
+                  <li><a href="#plans" class="font-sans text-sm transition-colors" style="color:rgba(255,255,255,0.72);" onmouseover="this.style.color='rgba(255,255,255,0.96)'" onmouseout="this.style.color='rgba(255,255,255,0.72)'">Plans</a></li>
+                  <li><a href="#about" class="font-sans text-sm transition-colors" style="color:rgba(255,255,255,0.72);" onmouseover="this.style.color='rgba(255,255,255,0.96)'" onmouseout="this.style.color='rgba(255,255,255,0.72)'">About</a></li>
+                </ul>
+              </div>
+              <div>
+                <p class="font-sans text-xs tracking-widest uppercase mb-4" style="color:rgba(255,255,255,0.9);">CONTACT</p>
+                <ul class="flex flex-wrap items-center gap-x-6 gap-y-3">
+                  <li><a href="https://wa.me/212781571863" class="font-sans text-sm transition-colors" style="color:rgba(255,255,255,0.72);" onmouseover="this.style.color='rgba(255,255,255,0.96)'" onmouseout="this.style.color='rgba(255,255,255,0.72)'" target="_blank" rel="noopener">WhatsApp</a></li>
+                  <li><a href="mailto:sergio@kenshovisual.com" class="font-sans text-sm transition-colors" style="color:rgba(255,255,255,0.72);" onmouseover="this.style.color='rgba(255,255,255,0.96)'" onmouseout="this.style.color='rgba(255,255,255,0.72)'">Email</a></li>
+                  <li><a href="https://www.linkedin.com/in/sergio-alonso-35584894/" class="font-sans text-sm transition-colors" style="color:rgba(255,255,255,0.72);" onmouseover="this.style.color='rgba(255,255,255,0.96)'" onmouseout="this.style.color='rgba(255,255,255,0.72)'" target="_blank" rel="noopener">LinkedIn</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="pt-4 md:pt-5 flex flex-col gap-3 md:flex-row md:items-center md:justify-between" style="border-top:1px solid rgba(255,255,255,0.14);">
+              <p class="font-sans text-xs" style="color:rgba(255,255,255,0.56);">&#169; ${currentYear} Kensho Hospitality. All rights reserved.</p>
+            </div>
+          </div>
+        `;
+        footer.style.background = '#001B3A';
+        footer.style.borderTop = 'none';
+        footer.style.paddingTop = '4rem';
+        footer.style.paddingBottom = '3.5rem';
+      }
+    });
+  </script>
+
+  <script>
+  window.addEventListener('load', function () {
+    document.body.classList.remove('page-preload');
+    document.body.classList.add('page-ready');
+  });
+  </script>
+
+  <script>
+  window.addEventListener('DOMContentLoaded', function () {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // ── HERO: pure fade, no movement, cinematic ─────────────────────────────
+    var heroTargets = [
+      '#hero-badge',
+      '#hero-h1',
+      '#hero-sub',
+      '#hero-ctas',
+    ];
+    heroTargets.forEach(function (sel) {
+      var el = document.querySelector(sel);
+      if (el) gsap.set(el, { opacity: 0 });
+    });
+    gsap.to(heroTargets.map(function (s) { return document.querySelector(s); }).filter(Boolean), {
+      opacity: 1,
+      duration: 2.5,
+      ease: 'power1.inOut',
+      stagger: 0.4,
+    });
+
+    var heroStatsContent = document.querySelector('.hero-stats-content');
+    if (heroStatsContent) {
+      gsap.fromTo(heroStatsContent,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.4,
+          ease: 'power1.inOut',
+          delay: 0.02,
+        }
+      );
+    }
+
+    // ── CINEMATIC IMAGE SECTION: scale + border-radius reveal ───────────────
+    var cinematicImg = document.querySelector('#cinematic-img');
+    if (cinematicImg) {
+      gsap.set(cinematicImg, { scale: 0.75, borderRadius: '20px' });
+      gsap.to(cinematicImg, {
+        scale: 1,
+        borderRadius: '0px',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '#cinematic-reveal',
+          start: 'top bottom',
+          end: 'top top',
+          scrub: 1,
+        },
+      });
+    }
+
+    // ── SCROLL ANIMATIONS: headings ─────────────────────────────────────────
+    document.querySelectorAll('h2, h3').forEach(function (el) {
+      if (el.closest('#hero') || el.closest('.service-row') || el.closest('#plans') || el.closest('#about') || el.closest('#faq') || el.closest('#contact')) return;
+      gsap.set(el, { opacity: 0, y: 30 });
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 90%',
+        once: true,
+        onEnter: function () {
+          gsap.to(el, { opacity: 1, y: 0, duration: 1.8, ease: 'expo.out' });
+        },
+      });
+    });
+
+    // ── SCROLL ANIMATIONS: paragraphs, pain quotes, labels ──────────────────
+    document.querySelectorAll('p.pain-quote, .service-text > p, .section-label').forEach(function (el) {
+      if (el.closest('#hero') || el.closest('.service-row') || el.closest('#plans') || el.closest('#about') || el.closest('#faq') || el.closest('#contact')) return;
+      gsap.set(el, { opacity: 0, y: 30 });
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 90%',
+        once: true,
+        onEnter: function () {
+          gsap.to(el, { opacity: 1, y: 0, duration: 1.8, ease: 'expo.out' });
+        },
+      });
+    });
+
+    // ── SCROLL ANIMATIONS: service rows (text + visual fade up together) ─────
+    // ── SCROLL ANIMATIONS: glass cards fade ─────────────────────────────────
+    document.querySelectorAll('.glass-card').forEach(function (card) {
+      if (card.style.display === 'none' || card.closest('.service-row')) return;
+      gsap.set(card, { opacity: 0, y: 30 });
+      ScrollTrigger.create({
+        trigger: card,
+        start: 'top 90%',
+        once: true,
+        onEnter: function () {
+          gsap.to(card, { opacity: 1, y: 0, duration: 1.8, ease: 'expo.out' });
+        },
+      });
+    });
+
+    // ── SCROLL ANIMATIONS: pill tab bars ────────────────────────────────────
+    document.querySelectorAll('.svc-tab-bar').forEach(function (bar) {
+      if (bar.closest('#hero') || bar.closest('.service-row')) return;
+      var pills = bar.querySelectorAll('.svc-tab');
+      gsap.set(pills, { opacity: 0 });
+      ScrollTrigger.create({
+        trigger: bar,
+        start: 'top 90%',
+        once: true,
+        onEnter: function () {
+          gsap.to(pills, {
+            opacity: 1,
+            duration: 1.8,
+            ease: 'expo.out',
+            stagger: 0.08,
+          });
+        },
+      });
+    });
+
+    // ── SCROLL ANIMATIONS: plan cards ────────────────────────────────────────
+    var planCards = document.querySelectorAll('#plans .reveal');
+    if (planCards.length) {
+      gsap.set(planCards, { opacity: 0, y: 30 });
+      ScrollTrigger.create({
+        trigger: '#plans',
+        start: 'top 90%',
+        once: true,
+        onEnter: function () {
+          gsap.to(planCards, {
+            opacity: 1,
+            y: 0,
+            duration: 1.8,
+            ease: 'expo.out',
+            stagger: 0.12,
+          });
+        },
+      });
+    }
+
+    // ── SCROLL ANIMATIONS: remaining .reveal elements ────────────────────────
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      if (el.closest('.service-row') || el.closest('#plans') || el.closest('#hero') || el.closest('#about') || el.closest('#faq') || el.closest('#contact')) return;
+      if (el.id === 'services-intro') {
+        gsap.set(el, { y: 30 });
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top 90%',
+          once: true,
+          onEnter: function () {
+            gsap.to(el, { y: 0, duration: 1.8, ease: 'expo.out' });
+          },
+        });
+        return;
+      }
+      gsap.set(el, { opacity: 0, y: 30 });
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 90%',
+        once: true,
+        onEnter: function () {
+          gsap.to(el, { opacity: 1, y: 0, duration: 1.8, ease: 'expo.out' });
+        },
+      });
+    });
+
+  });
+  </script>
+
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var item = this.closest('.faq-item');
+        var body = item.querySelector('.faq-body');
+        var mark = item.querySelector('.faq-mark');
+        var isOpen = body.style.maxHeight && body.style.maxHeight !== '0px';
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(function(el) {
+          el.querySelector('.faq-body').style.maxHeight = '0px';
+          var m = el.querySelector('.faq-mark');
+          m.textContent = '+';
+          m.style.color = '#C8C2BA';
+        });
+        // Open clicked if it was closed
+        if (!isOpen) {
+          body.style.maxHeight = body.scrollHeight + 'px';
+          mark.textContent = '−';
+          mark.style.color = '#1C1B19';
+        }
+      });
+    });
+  </script>
+
+  <script>
+    (function () {
+      var container = document.getElementById('ai-before-after');
+      var afterClip = document.getElementById('ai-after-clip');
+      var divider = document.getElementById('ai-divider');
+      var handle = document.getElementById('ai-handle');
+      if (!container) return;
+
+      function setPos(pct) {
+        pct = Math.max(2, Math.min(98, pct));
+        afterClip.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
+        divider.style.left = pct + '%';
+        handle.style.left = pct + '%';
+      }
+
+      function getPos(e) {
+        var rect = container.getBoundingClientRect();
+        var clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        return ((clientX - rect.left) / rect.width) * 100;
+      }
+
+      var dragging = false;
+      container.addEventListener('mousedown', function (e) { dragging = true; setPos(getPos(e)); e.preventDefault(); });
+      document.addEventListener('mousemove', function (e) { if (dragging) setPos(getPos(e)); });
+      document.addEventListener('mouseup', function () { dragging = false; });
+      container.addEventListener('touchstart', function (e) { dragging = true; setPos(getPos(e)); }, { passive: true });
+      document.addEventListener('touchmove', function (e) { if (dragging) setPos(getPos(e)); }, { passive: true });
+      document.addEventListener('touchend', function () { dragging = false; });
+    })();
+  </script>
+</body>
+</html>
