@@ -1287,8 +1287,9 @@ footer {
   }
 
   .about-name-card {
-    right: 0.75rem !important;
-    bottom: 0.5rem !important;
+    right: 0.3rem !important;
+    bottom: -3.35rem !important;
+    max-width: calc(100% - 1rem) !important;
   }
 
   /* 6. Glass card container: reduce padding so cards don't overflow */
