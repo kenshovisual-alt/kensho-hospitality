@@ -1274,6 +1274,10 @@ footer {
     padding-bottom: 4.5rem !important;
   }
 
+  #about {
+    padding-top: 5.75rem !important;
+  }
+
   /* 4. Cinematic image: force landscape crop on mobile */
   #cinematic-reveal {
     height: 56vw !important;
