@@ -1211,6 +1211,12 @@ footer {
 /* ── Mobile fixes ────────────────────────────────────────────────────────── */
 @media (max-width: 767px) {
 
+  #hero {
+    justify-content: flex-start !important;
+    padding-top: 5.25rem !important;
+    padding-bottom: 3.25rem !important;
+  }
+
   /* 1. Hero background: disable fixed attachment (breaks on iOS) */
   #hero > div:first-child {
     background-image: url('assets/desk.webp') !important;
@@ -1219,12 +1225,18 @@ footer {
   }
 
   #hero-badge {
-    margin-top: 4.1rem !important;
+    margin-top: 2.85rem !important;
+    margin-bottom: 0.9rem !important;
+  }
+
+  #hero-h1 {
+    margin-bottom: 1.55rem !important;
   }
 
   #hero-sub {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
   }
 
   .hero-stats-reveal {
