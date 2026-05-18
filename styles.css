@@ -1272,8 +1272,8 @@ footer {
   }
 
   .about-name-card {
-    right: -1.55rem !important;
-    bottom: -2.15rem !important;
+    right: 0.75rem !important;
+    bottom: 0.5rem !important;
   }
 
   /* 6. Glass card container: reduce padding so cards don't overflow */
@@ -1304,16 +1304,30 @@ footer {
     padding: 1rem 0.75rem !important;
   }
 
-  /* 10. Tab bar: single row, fit-content, compact tabs */
+  /* 10. Tab bar: single row, fit-content */
   .svc-tab-bar {
     width: fit-content !important;
     flex-wrap: nowrap !important;
+  }
+
+  .svc-tab-bar:not([data-group="ai"]) {
+    padding: 11px !important;
+  }
+
+  .svc-tab-bar:not([data-group="ai"]) .tab-slider-pill {
+    top: 11px !important;
+    height: calc(100% - 22px) !important;
   }
 
   .svc-tab-bar .svc-tab {
     padding: 0.4rem 0.7rem !important;
     font-size: 0.68rem !important;
     white-space: nowrap;
+  }
+
+  .svc-tab-bar:not([data-group="ai"]) .svc-tab {
+    padding: 0.54rem 0.95rem !important;
+    font-size: 0.8rem !important;
   }
 
   /* 11. Glass card header / body: tighten padding on mobile */
