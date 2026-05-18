@@ -574,7 +574,7 @@ header {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 0 3rem 1rem;
+  padding: 0 3rem 2rem;
 }
 
 .service-row-intro p {
@@ -1222,8 +1222,9 @@ footer {
   #hero > div:first-child {
     background-image: url('assets/desk.webp') !important;
     background-attachment: scroll !important;
-    background-size: 112% auto !important;
-    background-position: 72% 62% !important;
+    background-repeat: no-repeat !important;
+    background-size: 126% 126% !important;
+    background-position: 70% 72% !important;
   }
 
   #hero-badge {
