@@ -1222,7 +1222,8 @@ footer {
   #hero > div:first-child {
     background-image: url('assets/desk.webp') !important;
     background-attachment: scroll !important;
-    background-position: 72% center !important;
+    background-size: 112% auto !important;
+    background-position: 72% 62% !important;
   }
 
   #hero-badge {
