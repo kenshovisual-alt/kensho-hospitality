@@ -405,7 +405,7 @@ header {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  animation: heroMarquee 55s linear infinite;
+  animation: heroMarquee 78s linear infinite;
 }
 @keyframes heroMarquee {
   from { transform: translateX(0); }
