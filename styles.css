@@ -1213,6 +1213,7 @@ footer {
 
   /* 1. Hero background: disable fixed attachment (breaks on iOS) */
   #hero > div:first-child {
+    background-image: url('assets/desk.webp') !important;
     background-attachment: scroll !important;
     background-position: 72% center !important;
   }
