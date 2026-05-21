@@ -263,16 +263,6 @@
       })();
     </script>
 
-    <!-- CINEMATIC IMAGE SECTION -->
-    <section id="cinematic-reveal" style="position:relative;overflow:hidden;background:#FAFAF8;height:100vh;width:100%;margin-bottom:0;">
-      <img
-        id="cinematic-img"
-        src="assets/KenshoHero1.png"
-        alt=""
-        style="width:100%;height:100%;object-fit:cover;display:block;will-change:transform;transform-origin:center center;"
-      />
-    </section>
-
     <!-- ROW 1: Software Development  -  text RIGHT, visual LEFT -->
     <div class="service-row reveal" data-svc="software" style="margin-top:5rem;">
       <div class="service-row-intro">
@@ -1341,7 +1331,7 @@
           <div class="mb-5">
             <p class="section-label mb-4">Get Found</p>
             <h3 class="font-serif" style="font-size:2rem;font-weight:300;color:#1C1B19;letter-spacing:-0.02em;line-height:1.1;">Presence</h3>
-            <p class="font-sans" style="font-size:0.75rem;font-weight:300;color:#7A7469;margin-top:4px;">from 450€ setup</p>
+            <p class="font-sans" style="font-size:0.75rem;font-weight:300;color:#7A7469;margin-top:4px;">setup fee from 250€</p>
           </div>
           <p class="font-serif" style="font-size:2.5rem;font-weight:300;color:#1C1B19;letter-spacing:-0.02em;line-height:1;margin-bottom:1.75rem;">from 417€<span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#7A7469;">/mo</span></p>
           <ul style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;flex:1;">
@@ -1397,7 +1387,6 @@
           <div class="mb-5">
             <p class="section-label mb-4">Get Chosen</p>
             <h3 class="font-serif" style="font-size:2rem;font-weight:300;color:#1C1B19;letter-spacing:-0.02em;line-height:1.1;">Growth</h3>
-            <p class="font-sans" style="font-size:0.75rem;font-weight:300;color:#7A7469;margin-top:4px;">from 650€ setup</p>
           </div>
           <p class="font-serif" style="font-size:2.5rem;font-weight:300;color:#1C1B19;letter-spacing:-0.02em;line-height:1;margin-bottom:1.75rem;">from 770€<span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#7A7469;">/mo</span></p>
           <ul style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;flex:1;">
@@ -1432,7 +1421,7 @@
           <div class="mb-5">
             <p class="section-label mb-4">Get Automated</p>
             <h3 class="font-serif" style="font-size:2rem;font-weight:300;color:#1C1B19;letter-spacing:-0.02em;line-height:1.1;">Full Stack</h3>
-            <p class="font-sans" style="font-size:0.75rem;font-weight:300;color:#7A7469;margin-top:4px;">from 1.170€ setup</p>
+            <p class="font-sans" style="font-size:0.75rem;font-weight:300;color:#7A7469;margin-top:4px;">from 650€ setup</p>
           </div>
           <p class="font-serif" style="font-size:2.5rem;font-weight:300;color:#1C1B19;letter-spacing:-0.02em;line-height:1;margin-bottom:1.75rem;">from 1,270€<span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#7A7469;">/mo</span></p>
           <ul style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;flex:1;">
@@ -1446,7 +1435,7 @@
             </li>
             <li style="display:flex;align-items:flex-start;gap:0.625rem;">
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="flex-shrink:0;margin-top:2px;"><path d="M2 6.5l3 3 6-6" stroke="#7A7469" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#1C1B19;line-height:1.5;">Voice AI Agent</span>
+              <span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#1C1B19;line-height:1.5;">Social Automation</span>
             </li>
             <li style="display:flex;align-items:flex-start;gap:0.625rem;">
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="flex-shrink:0;margin-top:2px;"><path d="M2 6.5l3 3 6-6" stroke="#7A7469" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1622,101 +1611,179 @@
   <script defer src="main.js?v=20260518"></script>
 
   <script>
-    // ── Service row tab switching ────────────────────────────────────────────────
+    // ── Service row tab switching + auto-rotate ──────────────────────────────────
     (function initServiceTabs() {
       const tabBars = document.querySelectorAll('.svc-tab-bar');
+
       tabBars.forEach(bar => {
         if (!bar.dataset.group) return;
         const group = bar.dataset.group;
         const tabs = bar.querySelectorAll('.svc-tab');
 
+        // ── Pill ──
         const pill = document.createElement('div');
         pill.className = 'tab-slider-pill';
         bar.insertBefore(pill, bar.firstChild);
-
         const initActive = bar.querySelector('.svc-tab.active');
         if (initActive) {
           gsap.set(pill, { left: initActive.offsetLeft, width: initActive.offsetWidth });
         }
 
-        tabs.forEach(tab => {
-          tab.addEventListener('click', () => {
-            if (tab.classList.contains('active')) return;
+        // ── Hint ──
+        const hint = document.createElement('div');
+        hint.className = 'svc-tab-hint';
+        hint.innerHTML = 'Scroll to explore <span class="svc-tab-hint-dot"></span>';
+        bar.insertAdjacentElement('afterend', hint);
 
-            const target = tab.dataset.tab;
-            const sub = target.split('-').slice(1).join('-');
+        // ── State ──
+        let autoStopped = false;
+        let rotateTimer = null;
+        let hintTimer = null;
 
-            function fadeSwap(hideEl, showEl) {
-              if (!hideEl || !showEl || hideEl === showEl) return;
-              hideEl.style.transition = 'opacity 200ms ease';
-              hideEl.style.opacity = '0';
-              setTimeout(() => {
-                hideEl.style.display = 'none';
-                hideEl.style.opacity = '';
-                showEl.style.display = '';
-                showEl.style.opacity = '0';
-                requestAnimationFrame(() => {
-                  showEl.style.transition = 'opacity 200ms ease';
-                  showEl.style.opacity = '1';
-                  setTimeout(() => { showEl.style.transition = ''; }, 220);
+        function dismissHint() {
+          if (hint.classList.contains('svc-tab-hint--gone')) return;
+          hint.style.opacity = '0';
+          hint.classList.add('svc-tab-hint--gone');
+        }
+
+        function stopAuto() {
+          autoStopped = true;
+          if (rotateTimer) { clearInterval(rotateTimer); rotateTimer = null; }
+          dismissHint();
+        }
+
+        // ── Shared fadeSwap ──
+        function fadeSwap(hideEl, showEl) {
+          if (!hideEl || !showEl || hideEl === showEl) return;
+          hideEl.style.transition = 'opacity 200ms ease';
+          hideEl.style.opacity = '0';
+          setTimeout(() => {
+            hideEl.style.display = 'none';
+            hideEl.style.opacity = '';
+            showEl.style.display = '';
+            showEl.style.opacity = '0';
+            requestAnimationFrame(() => {
+              showEl.style.transition = 'opacity 200ms ease';
+              showEl.style.opacity = '1';
+              setTimeout(() => { showEl.style.transition = ''; }, 220);
+            });
+          }, 200);
+        }
+
+        // ── Core activate (shared by click and auto-rotate) ──
+        function activateTab(tab) {
+          if (tab.classList.contains('active')) return;
+          const target = tab.dataset.tab;
+          const sub = target.split('-').slice(1).join('-');
+
+          gsap.to(pill, {
+            left: tab.offsetLeft,
+            width: tab.offsetWidth,
+            duration: 0.35,
+            ease: 'power2.inOut',
+            onComplete: () => {
+              tabs.forEach(t => t.classList.remove('active'));
+              tab.classList.add('active');
+
+              const allCopies = document.querySelectorAll('[id^="svc-copy-' + group + '-"]');
+              const targetCopy = document.getElementById('svc-copy-' + group + '-' + sub);
+              allCopies.forEach(c => {
+                if (c !== targetCopy && c.style.display !== 'none') fadeSwap(c, targetCopy);
+              });
+
+              const visualContainer = document.getElementById('svc-visual-' + group);
+              if (visualContainer) {
+                const allVisuals = visualContainer.querySelectorAll('.glass-card');
+                const targetVisual = document.getElementById('svc-visual-' + group + '-' + sub);
+                allVisuals.forEach(v => {
+                  if (v !== targetVisual && v.style.display !== 'none') fadeSwap(v, targetVisual);
                 });
-              }, 200);
-            }
+              }
 
-            gsap.to(pill, {
-              left: tab.offsetLeft,
-              width: tab.offsetWidth,
-              duration: 0.35,
-              ease: 'power2.inOut',
-              onComplete: () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-
-                const allCopies = document.querySelectorAll('[id^="svc-copy-' + group + '-"]');
-                const targetCopy = document.getElementById('svc-copy-' + group + '-' + sub);
-                allCopies.forEach(c => {
-                  if (c !== targetCopy && c.style.display !== 'none') {
-                    fadeSwap(c, targetCopy);
+              const allStats = document.querySelectorAll('[id^="svc-stats-' + group + '-"]');
+              const targetStats = document.getElementById('svc-stats-' + group + '-' + sub);
+              if (targetStats) {
+                allStats.forEach(s => {
+                  if (s !== targetStats && !s.classList.contains('stats-hidden')) {
+                    s.style.transition = 'opacity 200ms ease';
+                    s.style.opacity = '0';
+                    setTimeout(() => {
+                      s.classList.add('stats-hidden');
+                      s.style.opacity = '';
+                      s.style.transition = '';
+                      targetStats.classList.remove('stats-hidden');
+                      targetStats.style.opacity = '0';
+                      requestAnimationFrame(() => {
+                        targetStats.style.transition = 'opacity 200ms ease';
+                        targetStats.style.opacity = '1';
+                        setTimeout(() => { targetStats.style.transition = ''; }, 220);
+                      });
+                    }, 200);
                   }
                 });
-
-                const visualContainer = document.getElementById('svc-visual-' + group);
-                if (visualContainer) {
-                  const allVisuals = visualContainer.querySelectorAll('.glass-card');
-                  const targetVisual = document.getElementById('svc-visual-' + group + '-' + sub);
-                  allVisuals.forEach(v => {
-                    if (v !== targetVisual && v.style.display !== 'none') {
-                      fadeSwap(v, targetVisual);
-                    }
-                  });
-                }
-
-                const allStats = document.querySelectorAll('[id^="svc-stats-' + group + '-"]');
-                const targetStats = document.getElementById('svc-stats-' + group + '-' + sub);
-                if (targetStats) {
-                  allStats.forEach(s => {
-                    if (s !== targetStats && !s.classList.contains('stats-hidden')) {
-                      s.style.transition = 'opacity 200ms ease';
-                      s.style.opacity = '0';
-                      setTimeout(() => {
-                        s.classList.add('stats-hidden');
-                        s.style.opacity = '';
-                        s.style.transition = '';
-                        targetStats.classList.remove('stats-hidden');
-                        targetStats.style.opacity = '0';
-                        requestAnimationFrame(() => {
-                          targetStats.style.transition = 'opacity 200ms ease';
-                          targetStats.style.opacity = '1';
-                          setTimeout(() => { targetStats.style.transition = ''; }, 220);
-                        });
-                      }, 200);
-                    }
-                  });
-                }
               }
-            });
+            }
+          });
+        }
+
+        // ── Click handler ──
+        tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            stopAuto();
+            activateTab(tab);
           });
         });
+
+        // ── Pin section and step tabs on scroll ──────────────────────────────
+        if (tabs.length > 1) {
+          const tabList = Array.from(tabs);
+          const tabCount = tabList.length;
+          // Each extra tab beyond the first gets 80vh of pinned scroll distance
+          const pinDistance = (tabCount - 1) * 80;
+          const stepSize = 1 / (tabCount - 1);
+          let activeIdx = 0;
+
+          const serviceRow = bar.closest('.service-row');
+          const pinTarget = serviceRow || bar;
+
+          ScrollTrigger.create({
+            trigger: pinTarget,
+            start: 'top top',
+            end: '+=' + pinDistance + 'vh',
+            pin: true,
+            scrub: false,
+            anticipatePin: 1,
+            onUpdate: (self) => {
+              if (autoStopped) return;
+              const progress = self.progress;
+              // Which tab should be active at this progress point
+              const targetIdx = Math.min(
+                tabCount - 1,
+                Math.floor(progress / stepSize + 0.15)
+              );
+              if (targetIdx !== activeIdx) {
+                activeIdx = targetIdx;
+                activateTab(tabList[targetIdx]);
+              }
+            },
+            onEnter: () => {
+              if (autoStopped) {
+                dismissHint();
+                return;
+              }
+              setTimeout(() => {
+                if (!autoStopped) hint.style.opacity = '1';
+              }, 400);
+              hintTimer = setTimeout(dismissHint, 5000);
+            },
+            onLeaveBack: () => {
+              // Reset to first tab when scrolling back above the section
+              if (autoStopped) return;
+              activeIdx = 0;
+              activateTab(tabList[0]);
+            },
+          });
+        }
       });
     })();
 
@@ -1838,23 +1905,6 @@
           delay: 0.02,
         }
       );
-    }
-
-    // ── CINEMATIC IMAGE SECTION: scale + border-radius reveal ───────────────
-    var cinematicImg = document.querySelector('#cinematic-img');
-    if (cinematicImg) {
-      gsap.set(cinematicImg, { scale: 0.75, borderRadius: '20px' });
-      gsap.to(cinematicImg, {
-        scale: 1,
-        borderRadius: '0px',
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '#cinematic-reveal',
-          start: 'top bottom',
-          end: 'top top',
-          scrub: 1,
-        },
-      });
     }
 
     // ── SCROLL ANIMATIONS: headings ─────────────────────────────────────────

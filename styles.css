@@ -260,6 +260,42 @@ header {
   box-shadow: none;
 }
 
+/* ── Tab bar hint ────────────────────────────────────────────────────────── */
+.svc-tab-hint {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  color: #9C9287;
+  letter-spacing: -0.01em;
+  margin-top: -1.1rem;
+  margin-bottom: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  opacity: 0;
+  transition: opacity 600ms ease;
+  pointer-events: none;
+  user-select: none;
+}
+
+.svc-tab-hint--gone {
+  opacity: 0;
+}
+
+.svc-tab-hint-dot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #9C9287;
+  animation: hintPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes hintPulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.5); }
+}
+
 /* ── Glass cards ─────────────────────────────────────────────────────────── */
 .glass-card {
   position: relative;
@@ -578,7 +614,7 @@ header {
 
 .service-row-intro p {
   margin: 0;
-  font-size: clamp(3.15rem, 8vw, 7.4rem);
+  font-size: clamp(3.75rem, 9.6vw, 8.8rem);
   font-weight: 500;
   color: #FAFAF8;
   letter-spacing: -0.03em;
@@ -1301,9 +1337,27 @@ footer {
 
   /* 4. Cinematic image: force landscape crop on mobile */
   #cinematic-reveal {
-    height: 56vw !important;
-    min-height: 220px;
-    max-height: 420px;
+    height: 100vh !important;
+    min-height: unset;
+    max-height: unset;
+  }
+
+  #carousel-stage {
+    gap: 8px !important;
+    padding: 0 8px !important;
+  }
+
+  /* Mobile: center image wider, sides narrower so they peek */
+  #cinematic-img {
+    width: 72vw !important;
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+  }
+
+  .carousel-side {
+    width: 28vw !important;
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
   }
 
   /* 5. Service row visual column: reduce min-height, allow natural flow */
