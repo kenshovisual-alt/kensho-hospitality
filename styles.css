@@ -260,42 +260,6 @@ header {
   box-shadow: none;
 }
 
-/* ── Tab bar hint ────────────────────────────────────────────────────────── */
-.svc-tab-hint {
-  font-family: 'DM Sans', system-ui, sans-serif;
-  font-size: 0.7rem;
-  font-weight: 300;
-  color: #9C9287;
-  letter-spacing: -0.01em;
-  margin-top: -1.1rem;
-  margin-bottom: 1.75rem;
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  opacity: 0;
-  transition: opacity 600ms ease;
-  pointer-events: none;
-  user-select: none;
-}
-
-.svc-tab-hint--gone {
-  opacity: 0;
-}
-
-.svc-tab-hint-dot {
-  display: inline-block;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #9C9287;
-  animation: hintPulse 1.6s ease-in-out infinite;
-}
-
-@keyframes hintPulse {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50%       { opacity: 1;   transform: scale(1.5); }
-}
-
 /* ── Glass cards ─────────────────────────────────────────────────────────── */
 .glass-card {
   position: relative;

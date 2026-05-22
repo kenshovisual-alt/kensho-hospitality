@@ -1439,7 +1439,7 @@
             </li>
             <li style="display:flex;align-items:flex-start;gap:0.625rem;">
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none" style="flex-shrink:0;margin-top:2px;"><path d="M2 6.5l3 3 6-6" stroke="#7A7469" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#1C1B19;line-height:1.5;">Gift Card Automation</span>
+              <span class="font-sans" style="font-size:0.8125rem;font-weight:300;color:#1C1B19;line-height:1.5;">Influencer search and collaboration management</span>
             </li>
           </ul>
           <a href="https://wa.me/212781571863?text=Hello%20I%27m%20interested%20in%20%22Full%20Stack%22%20plan%20for%20my%20business" target="_blank" rel="noopener" class="font-sans text-sm text-center block" style="display:block;text-align:center;padding:0.65rem 1.4rem;border-radius:6px;font-size:0.8125rem;font-weight:300;letter-spacing:-0.01em;color:#1C1B19;text-decoration:none;border:1px solid #1C1B19;background:transparent;">
@@ -1603,7 +1603,7 @@
   <script defer src="main.js?v=20260518"></script>
 
   <script>
-    // ── Service row tab switching + auto-rotate ──────────────────────────────────
+    // ── Service row tab switching ───────────────────────────────────────────
     (function initServiceTabs() {
       const tabBars = document.querySelectorAll('.svc-tab-bar');
 
@@ -1619,29 +1619,6 @@
         const initActive = bar.querySelector('.svc-tab.active');
         if (initActive) {
           gsap.set(pill, { left: initActive.offsetLeft, width: initActive.offsetWidth });
-        }
-
-        // ── Hint ──
-        const hint = document.createElement('div');
-        hint.className = 'svc-tab-hint';
-        hint.innerHTML = 'Scroll to explore <span class="svc-tab-hint-dot"></span>';
-        bar.insertAdjacentElement('afterend', hint);
-
-        // ── State ──
-        let autoStopped = false;
-        let rotateTimer = null;
-        let hintTimer = null;
-
-        function dismissHint() {
-          if (hint.classList.contains('svc-tab-hint--gone')) return;
-          hint.style.opacity = '0';
-          hint.classList.add('svc-tab-hint--gone');
-        }
-
-        function stopAuto() {
-          autoStopped = true;
-          if (rotateTimer) { clearInterval(rotateTimer); rotateTimer = null; }
-          dismissHint();
         }
 
         // ── Shared fadeSwap ──
@@ -1662,7 +1639,7 @@
           }, 200);
         }
 
-        // ── Core activate (shared by click and auto-rotate) ──
+        // ── Core activate ──
         function activateTab(tab) {
           if (tab.classList.contains('active')) return;
           const target = tab.dataset.tab;
@@ -1721,61 +1698,9 @@
         // ── Click handler ──
         tabs.forEach(tab => {
           tab.addEventListener('click', () => {
-            stopAuto();
             activateTab(tab);
           });
         });
-
-        // ── Pin section and step tabs on scroll ──────────────────────────────
-        if (tabs.length > 1) {
-          const tabList = Array.from(tabs);
-          const tabCount = tabList.length;
-          // Each extra tab beyond the first gets 80vh of pinned scroll distance
-          const pinDistance = (tabCount - 1) * 80;
-          const stepSize = 1 / (tabCount - 1);
-          let activeIdx = 0;
-
-          const serviceRow = bar.closest('.service-row');
-          const pinTarget = serviceRow || bar;
-
-          ScrollTrigger.create({
-            trigger: pinTarget,
-            start: 'top top',
-            end: '+=' + pinDistance + 'vh',
-            pin: true,
-            scrub: false,
-            anticipatePin: 1,
-            onUpdate: (self) => {
-              if (autoStopped) return;
-              const progress = self.progress;
-              // Which tab should be active at this progress point
-              const targetIdx = Math.min(
-                tabCount - 1,
-                Math.floor(progress / stepSize + 0.15)
-              );
-              if (targetIdx !== activeIdx) {
-                activeIdx = targetIdx;
-                activateTab(tabList[targetIdx]);
-              }
-            },
-            onEnter: () => {
-              if (autoStopped) {
-                dismissHint();
-                return;
-              }
-              setTimeout(() => {
-                if (!autoStopped) hint.style.opacity = '1';
-              }, 400);
-              hintTimer = setTimeout(dismissHint, 5000);
-            },
-            onLeaveBack: () => {
-              // Reset to first tab when scrolling back above the section
-              if (autoStopped) return;
-              activeIdx = 0;
-              activateTab(tabList[0]);
-            },
-          });
-        }
       });
     })();
 
@@ -1938,26 +1863,6 @@
         once: true,
         onEnter: function () {
           gsap.to(card, { opacity: 1, y: 0, duration: 1.8, ease: 'expo.out' });
-        },
-      });
-    });
-
-    // ── SCROLL ANIMATIONS: pill tab bars ────────────────────────────────────
-    document.querySelectorAll('.svc-tab-bar').forEach(function (bar) {
-      if (bar.closest('#hero') || bar.closest('.service-row')) return;
-      var pills = bar.querySelectorAll('.svc-tab');
-      gsap.set(pills, { opacity: 0 });
-      ScrollTrigger.create({
-        trigger: bar,
-        start: 'top 90%',
-        once: true,
-        onEnter: function () {
-          gsap.to(pills, {
-            opacity: 1,
-            duration: 1.8,
-            ease: 'expo.out',
-            stagger: 0.08,
-          });
         },
       });
     });
