@@ -1,0 +1,28 @@
+# hospitality.kenshovisual.com (29-10-2026, mudanza a Cloudflare).
+# vercel.json redirigía estas URLs viejas (/x.html → /x) a páginas que ya no existen aquí (daban 404). Ahora van en un
+# solo 301 a su equivalente en kenshovisual.com, o a la home si el contenido está en esta página (planes).
+/index.html / 301
+/servicios https://kenshovisual.com/servicios 301
+/servicios.html https://kenshovisual.com/servicios 301
+/proyectos https://kenshovisual.com/proyectos 301
+/proyectos.html https://kenshovisual.com/proyectos 301
+/planes / 301
+/planes.html / 301
+/precios / 301
+/precios.html / 301
+/blog https://kenshovisual.com/blog 301
+/blog.html https://kenshovisual.com/blog 301
+/recursos https://kenshovisual.com/blog 301
+/recursos.html https://kenshovisual.com/blog 301
+/blog-agentes-ia https://kenshovisual.com/blog/agentes-ia-personales 301
+/blog-agentes-ia.html https://kenshovisual.com/blog/agentes-ia-personales 301
+/blog-google-maps https://kenshovisual.com/blog/perfil-google-maps 301
+/blog-google-maps.html https://kenshovisual.com/blog/perfil-google-maps 301
+/caso-estudio-formacion-restaurante https://kenshovisual.com/proyectos/app-formacion-san-marco 301
+/caso-estudio-formacion-restaurante.html https://kenshovisual.com/proyectos/app-formacion-san-marco 301
+/aviso-legal https://kenshovisual.com/legal/terms-of-use 301
+/aviso-legal.html https://kenshovisual.com/legal/terms-of-use 301
+/privacidad https://kenshovisual.com/legal/privacy-policy 301
+/privacidad.html https://kenshovisual.com/legal/privacy-policy 301
+/cookies https://kenshovisual.com/legal/cookies 301
+/cookies.html https://kenshovisual.com/legal/cookies 301

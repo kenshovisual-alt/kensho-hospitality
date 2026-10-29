@@ -1,0 +1,19 @@
+// hospitality.kenshovisual.com en Cloudflare Workers, plan gratis: SOLO assets estáticos (sin "main", sin código).
+// Ninguna visita ejecuta un Worker: no gasta la cuota de 100.000 peticiones/día de la cuenta ni puede caerse por ella.
+// - _redirects: URLs viejas de vercel.json → su equivalente en kenshovisual.com (301) y /index.html → / (301).
+// - _headers: noindex solo en *.workers.dev (vista previa). Nunca en hospitality.kenshovisual.com.
+// - http:// → https:// lo hace una Redirect Rule de la zona kenshovisual.com (un 301, sin Worker).
+// Deploy: CLOUDFLARE_API_TOKEN=$(security find-generic-password -s cloudflare-api-token -a kensho -w) npx wrangler deploy
+// Estado y vuelta atrás: MUDANZA-CLOUDFLARE.md.
+{
+  "name": "kensho-hospitality",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": {
+    "directory": "./",
+    // Como Vercel: lo que no existe da 404 (sin página propia, igual que antes).
+    "not_found_handling": "none",
+    "html_handling": "auto-trailing-slash"
+  }
+}

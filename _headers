@@ -1,0 +1,8 @@
+# Cabeceras de los ficheros estáticos (las sirve la capa de assets, sin Worker).
+# HSTS como en Vercel.
+/*
+  Strict-Transport-Security: max-age=63072000
+
+# Solo la vista previa en workers.dev: que no se indexe. Nunca afecta a hospitality.kenshovisual.com.
+https://:worker.:subdomain.workers.dev/*
+  X-Robots-Tag: noindex, nofollow

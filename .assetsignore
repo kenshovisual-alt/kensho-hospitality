@@ -1,0 +1,10 @@
+# Ficheros del repo que no se publican
+.git
+.gitignore
+.assetsignore
+.wrangler
+wrangler.jsonc
+vercel.json
+*.md
+docs
+.DS_Store
