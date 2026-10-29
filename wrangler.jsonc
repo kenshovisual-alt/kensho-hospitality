@@ -8,6 +8,10 @@
 {
   "name": "kensho-hospitality",
   "compatibility_date": "2026-10-01",
+  // EN VIVO desde el 29-10-2026: ruta sobre el registro proxied (técnica de Bufones, certificado universal ya activo).
+  "routes": [
+    { "pattern": "hospitality.kenshovisual.com/*", "zone_name": "kenshovisual.com" }
+  ],
   "workers_dev": true,
   "preview_urls": false,
   "assets": {
